@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  TabBarViewController.h
 //  HouseOfMeetingElephants
 //
 //  Created by Stolniceanu Stefan on 04/11/14.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface TabBarViewController : UITabBarController
 
 @end
-

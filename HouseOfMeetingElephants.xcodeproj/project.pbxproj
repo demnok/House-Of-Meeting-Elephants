@@ -7,13 +7,58 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F82649E81A09600200D0A0EA /* BookingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F82649E71A09600200D0A0EA /* BookingTableViewController.m */; };
+		F82649EB1A09601000D0A0EA /* RoomTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F82649EA1A09601000D0A0EA /* RoomTableViewController.m */; };
+		F82649EE1A09602100D0A0EA /* ProjectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F82649ED1A09602100D0A0EA /* ProjectTableViewController.m */; };
+		F82649F11A0A208400D0A0EA /* CreateBookingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F82649F01A0A208400D0A0EA /* CreateBookingTableViewController.m */; };
+		F82649F41A0A208A00D0A0EA /* CreateRoomTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F82649F31A0A208A00D0A0EA /* CreateRoomTableViewController.m */; };
+		F82649F71A0A209300D0A0EA /* CreateProjectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F82649F61A0A209300D0A0EA /* CreateProjectTableViewController.m */; };
 		F83AD03F1A08FD9000519D0C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F83AD03E1A08FD9000519D0C /* main.m */; };
 		F83AD0421A08FD9000519D0C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F83AD0411A08FD9000519D0C /* AppDelegate.m */; };
-		F83AD0451A08FD9000519D0C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F83AD0441A08FD9000519D0C /* ViewController.m */; };
 		F83AD0481A08FD9000519D0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F83AD0461A08FD9000519D0C /* Main.storyboard */; };
 		F83AD04A1A08FD9000519D0C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F83AD0491A08FD9000519D0C /* Images.xcassets */; };
 		F83AD04D1A08FD9000519D0C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F83AD04B1A08FD9000519D0C /* LaunchScreen.xib */; };
 		F83AD0591A08FD9000519D0C /* HouseOfMeetingElephantsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F83AD0581A08FD9000519D0C /* HouseOfMeetingElephantsTests.m */; };
+		F83AD06E1A08FF5E00519D0C /* Booking.m in Sources */ = {isa = PBXBuildFile; fileRef = F83AD06D1A08FF5E00519D0C /* Booking.m */; };
+		F83AD0711A08FF6B00519D0C /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = F83AD0701A08FF6B00519D0C /* Room.m */; };
+		F83AD0741A08FF7900519D0C /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = F83AD0731A08FF7900519D0C /* Project.m */; };
+		F83AD0791A091B9800519D0C /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F83AD0781A091B9800519D0C /* TabBarViewController.m */; };
+		F83AD0B21A0921D000519D0C /* BookingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F83AD0B01A0921D000519D0C /* BookingTableViewCell.m */; };
+		F83AD0B31A0921D000519D0C /* BookingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F83AD0B11A0921D000519D0C /* BookingTableViewCell.xib */; };
+		F83AD0B71A0921DD00519D0C /* RoomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F83AD0B51A0921DD00519D0C /* RoomTableViewCell.m */; };
+		F83AD0B81A0921DD00519D0C /* RoomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F83AD0B61A0921DD00519D0C /* RoomTableViewCell.xib */; };
+		F83AD0BF1A09220900519D0C /* ProjectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F83AD0BD1A09220900519D0C /* ProjectTableViewCell.m */; };
+		F83AD0C01A09220900519D0C /* ProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F83AD0BE1A09220900519D0C /* ProjectTableViewCell.xib */; };
+		F87107201A1391A300A10FB8 /* ChooseStartPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F871071F1A1391A300A10FB8 /* ChooseStartPointViewController.m */; };
+		F87107231A1391B300A10FB8 /* ChooseEndPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F87107221A1391B300A10FB8 /* ChooseEndPointViewController.m */; };
+		F885997E1A1B42740044C38A /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F885996C1A1B42740044C38A /* AFHTTPRequestOperation.m */; };
+		F885997F1A1B42740044C38A /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F885996E1A1B42740044C38A /* AFHTTPRequestOperationManager.m */; };
+		F88599801A1B42740044C38A /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F88599701A1B42740044C38A /* AFHTTPSessionManager.m */; };
+		F88599811A1B42740044C38A /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F88599731A1B42740044C38A /* AFNetworkReachabilityManager.m */; };
+		F88599821A1B42740044C38A /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = F88599751A1B42740044C38A /* AFSecurityPolicy.m */; };
+		F88599831A1B42740044C38A /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F88599771A1B42740044C38A /* AFURLConnectionOperation.m */; };
+		F88599841A1B42740044C38A /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = F88599791A1B42740044C38A /* AFURLRequestSerialization.m */; };
+		F88599851A1B42740044C38A /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = F885997B1A1B42740044C38A /* AFURLResponseSerialization.m */; };
+		F88599861A1B42740044C38A /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F885997D1A1B42740044C38A /* AFURLSessionManager.m */; };
+		F88E97821A10D77A00BA93F3 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F88E97701A10D77A00BA93F3 /* .gitignore */; };
+		F88E97831A10D77A00BA93F3 /* FCColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F88E97721A10D77A00BA93F3 /* FCColorPickerViewController.m */; };
+		F88E97841A10D77A00BA93F3 /* FCColorPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F88E97731A10D77A00BA93F3 /* FCColorPickerViewController.xib */; };
+		F88E97851A10D77A00BA93F3 /* iOS-Color-Picker.podspec in Resources */ = {isa = PBXBuildFile; fileRef = F88E97741A10D77A00BA93F3 /* iOS-Color-Picker.podspec */; };
+		F88E97861A10D77A00BA93F3 /* FCBrightDarkGradView.m in Sources */ = {isa = PBXBuildFile; fileRef = F88E97771A10D77A00BA93F3 /* FCBrightDarkGradView.m */; };
+		F88E97871A10D77A00BA93F3 /* FCColorSwatchView.m in Sources */ = {isa = PBXBuildFile; fileRef = F88E97791A10D77A00BA93F3 /* FCColorSwatchView.m */; };
+		F88E97881A10D77A00BA93F3 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = F88E977A1A10D77A00BA93F3 /* README.md */; };
+		F88E97891A10D77A00BA93F3 /* colormap.png in Resources */ = {isa = PBXBuildFile; fileRef = F88E977C1A10D77A00BA93F3 /* colormap.png */; };
+		F88E978A1A10D77A00BA93F3 /* color-picker-ipad-landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = F88E977E1A10D77A00BA93F3 /* color-picker-ipad-landscape.png */; };
+		F88E978B1A10D77A00BA93F3 /* color-picker-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F88E977F1A10D77A00BA93F3 /* color-picker-ipad.png */; };
+		F88E978C1A10D77A00BA93F3 /* color-picker-iphone-4.png in Resources */ = {isa = PBXBuildFile; fileRef = F88E97801A10D77A00BA93F3 /* color-picker-iphone-4.png */; };
+		F88E978D1A10D77A00BA93F3 /* color-picker-iphone-5.png in Resources */ = {isa = PBXBuildFile; fileRef = F88E97811A10D77A00BA93F3 /* color-picker-iphone-5.png */; };
+		F88E97901A10DAE800BA93F3 /* ColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F88E978F1A10DAE800BA93F3 /* ColorPickerViewController.m */; };
+		F88E97E01A111AA300BA93F3 /* ChooseRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F88E97DF1A111AA300BA93F3 /* ChooseRoomViewController.m */; };
+		F8BC52DB1A13810D00E98E8C /* ChooseProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BC52DA1A13810D00E98E8C /* ChooseProjectViewController.m */; };
+		F8FA05001A12329200BD6E1C /* RoomList.m in Sources */ = {isa = PBXBuildFile; fileRef = F8FA04FF1A12329200BD6E1C /* RoomList.m */; };
+		F8FA05031A1232AF00BD6E1C /* BookingList.m in Sources */ = {isa = PBXBuildFile; fileRef = F8FA05021A1232AF00BD6E1C /* BookingList.m */; };
+		F8FA05061A1232BC00BD6E1C /* ProjectList.m in Sources */ = {isa = PBXBuildFile; fileRef = F8FA05051A1232BC00BD6E1C /* ProjectList.m */; };
+		F8FDFA221A19E3D700D50DC8 /* BookingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8FDFA211A19E3D700D50DC8 /* BookingDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,19 +72,107 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F82649E61A09600200D0A0EA /* BookingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingTableViewController.h; sourceTree = "<group>"; };
+		F82649E71A09600200D0A0EA /* BookingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingTableViewController.m; sourceTree = "<group>"; };
+		F82649E91A09601000D0A0EA /* RoomTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomTableViewController.h; sourceTree = "<group>"; };
+		F82649EA1A09601000D0A0EA /* RoomTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomTableViewController.m; sourceTree = "<group>"; };
+		F82649EC1A09602100D0A0EA /* ProjectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectTableViewController.h; sourceTree = "<group>"; };
+		F82649ED1A09602100D0A0EA /* ProjectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectTableViewController.m; sourceTree = "<group>"; };
+		F82649EF1A0A208400D0A0EA /* CreateBookingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateBookingTableViewController.h; sourceTree = "<group>"; };
+		F82649F01A0A208400D0A0EA /* CreateBookingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateBookingTableViewController.m; sourceTree = "<group>"; };
+		F82649F21A0A208A00D0A0EA /* CreateRoomTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateRoomTableViewController.h; sourceTree = "<group>"; };
+		F82649F31A0A208A00D0A0EA /* CreateRoomTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateRoomTableViewController.m; sourceTree = "<group>"; };
+		F82649F51A0A209300D0A0EA /* CreateProjectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateProjectTableViewController.h; sourceTree = "<group>"; };
+		F82649F61A0A209300D0A0EA /* CreateProjectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateProjectTableViewController.m; sourceTree = "<group>"; };
 		F83AD0391A08FD9000519D0C /* HouseOfMeetingElephants.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HouseOfMeetingElephants.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F83AD03D1A08FD9000519D0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F83AD03E1A08FD9000519D0C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F83AD0401A08FD9000519D0C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F83AD0411A08FD9000519D0C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F83AD0431A08FD9000519D0C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F83AD0441A08FD9000519D0C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		F83AD0471A08FD9000519D0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F83AD0491A08FD9000519D0C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F83AD04C1A08FD9000519D0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		F83AD0521A08FD9000519D0C /* HouseOfMeetingElephantsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HouseOfMeetingElephantsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F83AD0571A08FD9000519D0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F83AD0581A08FD9000519D0C /* HouseOfMeetingElephantsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HouseOfMeetingElephantsTests.m; sourceTree = "<group>"; };
+		F83AD06C1A08FF5E00519D0C /* Booking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Booking.h; path = ../Booking.h; sourceTree = "<group>"; };
+		F83AD06D1A08FF5E00519D0C /* Booking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Booking.m; path = ../Booking.m; sourceTree = "<group>"; };
+		F83AD06F1A08FF6B00519D0C /* Room.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Room.h; path = ../Room.h; sourceTree = "<group>"; };
+		F83AD0701A08FF6B00519D0C /* Room.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Room.m; path = ../Room.m; sourceTree = "<group>"; };
+		F83AD0721A08FF7900519D0C /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Project.h; path = ../Project.h; sourceTree = "<group>"; };
+		F83AD0731A08FF7900519D0C /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Project.m; path = ../Project.m; sourceTree = "<group>"; };
+		F83AD0771A091B9800519D0C /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
+		F83AD0781A091B9800519D0C /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
+		F83AD0AF1A0921D000519D0C /* BookingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingTableViewCell.h; sourceTree = "<group>"; };
+		F83AD0B01A0921D000519D0C /* BookingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingTableViewCell.m; sourceTree = "<group>"; };
+		F83AD0B11A0921D000519D0C /* BookingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookingTableViewCell.xib; sourceTree = "<group>"; };
+		F83AD0B41A0921DD00519D0C /* RoomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomTableViewCell.h; sourceTree = "<group>"; };
+		F83AD0B51A0921DD00519D0C /* RoomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomTableViewCell.m; sourceTree = "<group>"; };
+		F83AD0B61A0921DD00519D0C /* RoomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoomTableViewCell.xib; sourceTree = "<group>"; };
+		F83AD0BC1A09220900519D0C /* ProjectTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectTableViewCell.h; sourceTree = "<group>"; };
+		F83AD0BD1A09220900519D0C /* ProjectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectTableViewCell.m; sourceTree = "<group>"; };
+		F83AD0BE1A09220900519D0C /* ProjectTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectTableViewCell.xib; sourceTree = "<group>"; };
+		F871071E1A1391A300A10FB8 /* ChooseStartPointViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseStartPointViewController.h; sourceTree = "<group>"; };
+		F871071F1A1391A300A10FB8 /* ChooseStartPointViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseStartPointViewController.m; sourceTree = "<group>"; };
+		F87107211A1391B300A10FB8 /* ChooseEndPointViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseEndPointViewController.h; sourceTree = "<group>"; };
+		F87107221A1391B300A10FB8 /* ChooseEndPointViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseEndPointViewController.m; sourceTree = "<group>"; };
+		F885996B1A1B42740044C38A /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		F885996C1A1B42740044C38A /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		F885996D1A1B42740044C38A /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
+		F885996E1A1B42740044C38A /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
+		F885996F1A1B42740044C38A /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		F88599701A1B42740044C38A /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		F88599711A1B42740044C38A /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		F88599721A1B42740044C38A /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		F88599731A1B42740044C38A /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		F88599741A1B42740044C38A /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
+		F88599751A1B42740044C38A /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
+		F88599761A1B42740044C38A /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		F88599771A1B42740044C38A /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		F88599781A1B42740044C38A /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		F88599791A1B42740044C38A /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		F885997A1A1B42740044C38A /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		F885997B1A1B42740044C38A /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		F885997C1A1B42740044C38A /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
+		F885997D1A1B42740044C38A /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		F88599881A1B67DC0044C38A /* ChooseRoomViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseRoomViewControllerDelegate.h; sourceTree = "<group>"; };
+		F88599891A1B82320044C38A /* ChooseProjectViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseProjectViewControllerDelegate.h; sourceTree = "<group>"; };
+		F885998A1A1B860F0044C38A /* ChooseStartPointViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseStartPointViewControllerDelegate.h; sourceTree = "<group>"; };
+		F885998B1A1B90BD0044C38A /* ChooseEndPointViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseEndPointViewControllerDelegate.h; sourceTree = "<group>"; };
+		F885998C1A1B9E380044C38A /* SingletonProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingletonProtocol.h; sourceTree = "<group>"; };
+		F88E97701A10D77A00BA93F3 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		F88E97711A10D77A00BA93F3 /* FCColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCColorPickerViewController.h; sourceTree = "<group>"; };
+		F88E97721A10D77A00BA93F3 /* FCColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCColorPickerViewController.m; sourceTree = "<group>"; };
+		F88E97731A10D77A00BA93F3 /* FCColorPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FCColorPickerViewController.xib; sourceTree = "<group>"; };
+		F88E97741A10D77A00BA93F3 /* iOS-Color-Picker.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "iOS-Color-Picker.podspec"; sourceTree = "<group>"; };
+		F88E97761A10D77A00BA93F3 /* FCBrightDarkGradView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCBrightDarkGradView.h; sourceTree = "<group>"; };
+		F88E97771A10D77A00BA93F3 /* FCBrightDarkGradView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCBrightDarkGradView.m; sourceTree = "<group>"; };
+		F88E97781A10D77A00BA93F3 /* FCColorSwatchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCColorSwatchView.h; sourceTree = "<group>"; };
+		F88E97791A10D77A00BA93F3 /* FCColorSwatchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCColorSwatchView.m; sourceTree = "<group>"; };
+		F88E977A1A10D77A00BA93F3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F88E977C1A10D77A00BA93F3 /* colormap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colormap.png; sourceTree = "<group>"; };
+		F88E977E1A10D77A00BA93F3 /* color-picker-ipad-landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "color-picker-ipad-landscape.png"; sourceTree = "<group>"; };
+		F88E977F1A10D77A00BA93F3 /* color-picker-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "color-picker-ipad.png"; sourceTree = "<group>"; };
+		F88E97801A10D77A00BA93F3 /* color-picker-iphone-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "color-picker-iphone-4.png"; sourceTree = "<group>"; };
+		F88E97811A10D77A00BA93F3 /* color-picker-iphone-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "color-picker-iphone-5.png"; sourceTree = "<group>"; };
+		F88E978E1A10DAE800BA93F3 /* ColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPickerViewController.h; sourceTree = "<group>"; };
+		F88E978F1A10DAE800BA93F3 /* ColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorPickerViewController.m; sourceTree = "<group>"; };
+		F88E97DE1A111AA300BA93F3 /* ChooseRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseRoomViewController.h; sourceTree = "<group>"; };
+		F88E97DF1A111AA300BA93F3 /* ChooseRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseRoomViewController.m; sourceTree = "<group>"; };
+		F8BC52D91A13810D00E98E8C /* ChooseProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseProjectViewController.h; sourceTree = "<group>"; };
+		F8BC52DA1A13810D00E98E8C /* ChooseProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseProjectViewController.m; sourceTree = "<group>"; };
+		F8DD588F1A1608A300D00B2B /* CreateBookingViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateBookingViewControllerDelegate.h; sourceTree = "<group>"; };
+		F8DD58901A1616F500D00B2B /* CreateRoomViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateRoomViewControllerDelegate.h; sourceTree = "<group>"; };
+		F8DD58911A16233D00D00B2B /* CreateProjectViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateProjectViewControllerDelegate.h; sourceTree = "<group>"; };
+		F8FA04FE1A12329200BD6E1C /* RoomList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomList.h; sourceTree = "<group>"; };
+		F8FA04FF1A12329200BD6E1C /* RoomList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomList.m; sourceTree = "<group>"; };
+		F8FA05011A1232AF00BD6E1C /* BookingList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingList.h; sourceTree = "<group>"; };
+		F8FA05021A1232AF00BD6E1C /* BookingList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingList.m; sourceTree = "<group>"; };
+		F8FA05041A1232BC00BD6E1C /* ProjectList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectList.h; sourceTree = "<group>"; };
+		F8FA05051A1232BC00BD6E1C /* ProjectList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectList.m; sourceTree = "<group>"; };
+		F8FDFA201A19E3D700D50DC8 /* BookingDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingDetailViewController.h; sourceTree = "<group>"; };
+		F8FDFA211A19E3D700D50DC8 /* BookingDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingDetailViewController.m; sourceTree = "<group>"; };
+		F8FDFA231A19EA3000D50DC8 /* BookingDetailViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingDetailViewControllerDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +193,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F82649E51A095FDC00D0A0EA /* Lists Table View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F82649E61A09600200D0A0EA /* BookingTableViewController.h */,
+				F82649E71A09600200D0A0EA /* BookingTableViewController.m */,
+				F82649E91A09601000D0A0EA /* RoomTableViewController.h */,
+				F82649EA1A09601000D0A0EA /* RoomTableViewController.m */,
+				F82649EC1A09602100D0A0EA /* ProjectTableViewController.h */,
+				F82649ED1A09602100D0A0EA /* ProjectTableViewController.m */,
+				F83AD0C41A0925B400519D0C /* Cells */,
+			);
+			name = "Lists Table View Controllers";
+			sourceTree = "<group>";
+		};
+		F82649F81A0A209800D0A0EA /* Create View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F88E97DC1A10F1DD00BA93F3 /* Create Booking Table View Controller */,
+				F88E97DB1A10F1D100BA93F3 /* Create Room Table View Controller */,
+				F88E97DA1A10F1BD00BA93F3 /* Create Project Table View Controller */,
+				F88E97DD1A111A3C00BA93F3 /* Choosing View Controllers */,
+			);
+			name = "Create View Controllers";
+			sourceTree = "<group>";
+		};
 		F83AD0301A08FD9000519D0C = {
 			isa = PBXGroup;
 			children = (
@@ -81,11 +239,10 @@
 		F83AD03B1A08FD9000519D0C /* HouseOfMeetingElephants */ = {
 			isa = PBXGroup;
 			children = (
-				F83AD0401A08FD9000519D0C /* AppDelegate.h */,
-				F83AD0411A08FD9000519D0C /* AppDelegate.m */,
-				F83AD0431A08FD9000519D0C /* ViewController.h */,
-				F83AD0441A08FD9000519D0C /* ViewController.m */,
 				F83AD0461A08FD9000519D0C /* Main.storyboard */,
+				F83AD0C21A09221D00519D0C /* Model */,
+				F83AD0C11A09221200519D0C /* View */,
+				F83AD0C31A09222300519D0C /* Controller */,
 				F83AD0491A08FD9000519D0C /* Images.xcassets */,
 				F83AD04B1A08FD9000519D0C /* LaunchScreen.xib */,
 				F83AD03C1A08FD9000519D0C /* Supporting Files */,
@@ -96,6 +253,8 @@
 		F83AD03C1A08FD9000519D0C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F885996A1A1B42740044C38A /* AFNetworking */,
+				F88E976F1A10D77A00BA93F3 /* ios-color-picker */,
 				F83AD03D1A08FD9000519D0C /* Info.plist */,
 				F83AD03E1A08FD9000519D0C /* main.m */,
 			);
@@ -117,6 +276,213 @@
 				F83AD0571A08FD9000519D0C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F83AD0C11A09221200519D0C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F8FDFA201A19E3D700D50DC8 /* BookingDetailViewController.h */,
+				F8FDFA211A19E3D700D50DC8 /* BookingDetailViewController.m */,
+				F8FDFA231A19EA3000D50DC8 /* BookingDetailViewControllerDelegate.h */,
+				F82649E51A095FDC00D0A0EA /* Lists Table View Controllers */,
+				F82649F81A0A209800D0A0EA /* Create View Controllers */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		F83AD0C21A09221D00519D0C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F8FA04FD1A12324000BD6E1C /* Lists of Entities */,
+				F8FA04FC1A12321F00BD6E1C /* Entities */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		F83AD0C31A09222300519D0C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F83AD0401A08FD9000519D0C /* AppDelegate.h */,
+				F83AD0411A08FD9000519D0C /* AppDelegate.m */,
+				F83AD0771A091B9800519D0C /* TabBarViewController.h */,
+				F83AD0781A091B9800519D0C /* TabBarViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		F83AD0C41A0925B400519D0C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F83AD0AF1A0921D000519D0C /* BookingTableViewCell.h */,
+				F83AD0B01A0921D000519D0C /* BookingTableViewCell.m */,
+				F83AD0B11A0921D000519D0C /* BookingTableViewCell.xib */,
+				F83AD0B41A0921DD00519D0C /* RoomTableViewCell.h */,
+				F83AD0B51A0921DD00519D0C /* RoomTableViewCell.m */,
+				F83AD0B61A0921DD00519D0C /* RoomTableViewCell.xib */,
+				F83AD0BC1A09220900519D0C /* ProjectTableViewCell.h */,
+				F83AD0BD1A09220900519D0C /* ProjectTableViewCell.m */,
+				F83AD0BE1A09220900519D0C /* ProjectTableViewCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		F885996A1A1B42740044C38A /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				F885996B1A1B42740044C38A /* AFHTTPRequestOperation.h */,
+				F885996C1A1B42740044C38A /* AFHTTPRequestOperation.m */,
+				F885996D1A1B42740044C38A /* AFHTTPRequestOperationManager.h */,
+				F885996E1A1B42740044C38A /* AFHTTPRequestOperationManager.m */,
+				F885996F1A1B42740044C38A /* AFHTTPSessionManager.h */,
+				F88599701A1B42740044C38A /* AFHTTPSessionManager.m */,
+				F88599711A1B42740044C38A /* AFNetworking.h */,
+				F88599721A1B42740044C38A /* AFNetworkReachabilityManager.h */,
+				F88599731A1B42740044C38A /* AFNetworkReachabilityManager.m */,
+				F88599741A1B42740044C38A /* AFSecurityPolicy.h */,
+				F88599751A1B42740044C38A /* AFSecurityPolicy.m */,
+				F88599761A1B42740044C38A /* AFURLConnectionOperation.h */,
+				F88599771A1B42740044C38A /* AFURLConnectionOperation.m */,
+				F88599781A1B42740044C38A /* AFURLRequestSerialization.h */,
+				F88599791A1B42740044C38A /* AFURLRequestSerialization.m */,
+				F885997A1A1B42740044C38A /* AFURLResponseSerialization.h */,
+				F885997B1A1B42740044C38A /* AFURLResponseSerialization.m */,
+				F885997C1A1B42740044C38A /* AFURLSessionManager.h */,
+				F885997D1A1B42740044C38A /* AFURLSessionManager.m */,
+			);
+			name = AFNetworking;
+			path = "ios-color-picker/AFNetworking";
+			sourceTree = "<group>";
+		};
+		F88E976F1A10D77A00BA93F3 /* ios-color-picker */ = {
+			isa = PBXGroup;
+			children = (
+				F88E97701A10D77A00BA93F3 /* .gitignore */,
+				F88E97711A10D77A00BA93F3 /* FCColorPickerViewController.h */,
+				F88E97721A10D77A00BA93F3 /* FCColorPickerViewController.m */,
+				F88E97731A10D77A00BA93F3 /* FCColorPickerViewController.xib */,
+				F88E97741A10D77A00BA93F3 /* iOS-Color-Picker.podspec */,
+				F88E97751A10D77A00BA93F3 /* Private */,
+				F88E977A1A10D77A00BA93F3 /* README.md */,
+				F88E977B1A10D77A00BA93F3 /* Resources */,
+				F88E977D1A10D77A00BA93F3 /* Screenshots */,
+			);
+			path = "ios-color-picker";
+			sourceTree = "<group>";
+		};
+		F88E97751A10D77A00BA93F3 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				F88E97761A10D77A00BA93F3 /* FCBrightDarkGradView.h */,
+				F88E97771A10D77A00BA93F3 /* FCBrightDarkGradView.m */,
+				F88E97781A10D77A00BA93F3 /* FCColorSwatchView.h */,
+				F88E97791A10D77A00BA93F3 /* FCColorSwatchView.m */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
+		F88E977B1A10D77A00BA93F3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F88E977C1A10D77A00BA93F3 /* colormap.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F88E977D1A10D77A00BA93F3 /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				F88E977E1A10D77A00BA93F3 /* color-picker-ipad-landscape.png */,
+				F88E977F1A10D77A00BA93F3 /* color-picker-ipad.png */,
+				F88E97801A10D77A00BA93F3 /* color-picker-iphone-4.png */,
+				F88E97811A10D77A00BA93F3 /* color-picker-iphone-5.png */,
+			);
+			path = Screenshots;
+			sourceTree = "<group>";
+		};
+		F88E97D91A10F19600BA93F3 /* Color Picker */ = {
+			isa = PBXGroup;
+			children = (
+				F88E978E1A10DAE800BA93F3 /* ColorPickerViewController.h */,
+				F88E978F1A10DAE800BA93F3 /* ColorPickerViewController.m */,
+			);
+			name = "Color Picker";
+			sourceTree = "<group>";
+		};
+		F88E97DA1A10F1BD00BA93F3 /* Create Project Table View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F82649F51A0A209300D0A0EA /* CreateProjectTableViewController.h */,
+				F82649F61A0A209300D0A0EA /* CreateProjectTableViewController.m */,
+				F8DD58911A16233D00D00B2B /* CreateProjectViewControllerDelegate.h */,
+				F88E97D91A10F19600BA93F3 /* Color Picker */,
+			);
+			name = "Create Project Table View Controller";
+			sourceTree = "<group>";
+		};
+		F88E97DB1A10F1D100BA93F3 /* Create Room Table View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F82649F21A0A208A00D0A0EA /* CreateRoomTableViewController.h */,
+				F82649F31A0A208A00D0A0EA /* CreateRoomTableViewController.m */,
+				F8DD58901A1616F500D00B2B /* CreateRoomViewControllerDelegate.h */,
+			);
+			name = "Create Room Table View Controller";
+			sourceTree = "<group>";
+		};
+		F88E97DC1A10F1DD00BA93F3 /* Create Booking Table View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F82649EF1A0A208400D0A0EA /* CreateBookingTableViewController.h */,
+				F8DD588F1A1608A300D00B2B /* CreateBookingViewControllerDelegate.h */,
+				F82649F01A0A208400D0A0EA /* CreateBookingTableViewController.m */,
+			);
+			name = "Create Booking Table View Controller";
+			sourceTree = "<group>";
+		};
+		F88E97DD1A111A3C00BA93F3 /* Choosing View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F88E97DE1A111AA300BA93F3 /* ChooseRoomViewController.h */,
+				F88E97DF1A111AA300BA93F3 /* ChooseRoomViewController.m */,
+				F88599881A1B67DC0044C38A /* ChooseRoomViewControllerDelegate.h */,
+				F8BC52D91A13810D00E98E8C /* ChooseProjectViewController.h */,
+				F8BC52DA1A13810D00E98E8C /* ChooseProjectViewController.m */,
+				F88599891A1B82320044C38A /* ChooseProjectViewControllerDelegate.h */,
+				F871071E1A1391A300A10FB8 /* ChooseStartPointViewController.h */,
+				F871071F1A1391A300A10FB8 /* ChooseStartPointViewController.m */,
+				F885998A1A1B860F0044C38A /* ChooseStartPointViewControllerDelegate.h */,
+				F87107211A1391B300A10FB8 /* ChooseEndPointViewController.h */,
+				F87107221A1391B300A10FB8 /* ChooseEndPointViewController.m */,
+				F885998B1A1B90BD0044C38A /* ChooseEndPointViewControllerDelegate.h */,
+			);
+			name = "Choosing View Controllers";
+			sourceTree = "<group>";
+		};
+		F8FA04FC1A12321F00BD6E1C /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				F83AD06C1A08FF5E00519D0C /* Booking.h */,
+				F83AD06D1A08FF5E00519D0C /* Booking.m */,
+				F83AD06F1A08FF6B00519D0C /* Room.h */,
+				F83AD0701A08FF6B00519D0C /* Room.m */,
+				F83AD0721A08FF7900519D0C /* Project.h */,
+				F83AD0731A08FF7900519D0C /* Project.m */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
+		F8FA04FD1A12324000BD6E1C /* Lists of Entities */ = {
+			isa = PBXGroup;
+			children = (
+				F885998C1A1B9E380044C38A /* SingletonProtocol.h */,
+				F8FA04FE1A12329200BD6E1C /* RoomList.h */,
+				F8FA04FF1A12329200BD6E1C /* RoomList.m */,
+				F8FA05011A1232AF00BD6E1C /* BookingList.h */,
+				F8FA05021A1232AF00BD6E1C /* BookingList.m */,
+				F8FA05041A1232BC00BD6E1C /* ProjectList.h */,
+				F8FA05051A1232BC00BD6E1C /* ProjectList.m */,
+			);
+			name = "Lists of Entities";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,8 +565,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F88E97891A10D77A00BA93F3 /* colormap.png in Resources */,
+				F88E97851A10D77A00BA93F3 /* iOS-Color-Picker.podspec in Resources */,
+				F83AD0B81A0921DD00519D0C /* RoomTableViewCell.xib in Resources */,
+				F88E97821A10D77A00BA93F3 /* .gitignore in Resources */,
+				F88E978D1A10D77A00BA93F3 /* color-picker-iphone-5.png in Resources */,
+				F83AD0C01A09220900519D0C /* ProjectTableViewCell.xib in Resources */,
+				F88E978C1A10D77A00BA93F3 /* color-picker-iphone-4.png in Resources */,
 				F83AD0481A08FD9000519D0C /* Main.storyboard in Resources */,
+				F83AD0B31A0921D000519D0C /* BookingTableViewCell.xib in Resources */,
+				F88E97841A10D77A00BA93F3 /* FCColorPickerViewController.xib in Resources */,
 				F83AD04D1A08FD9000519D0C /* LaunchScreen.xib in Resources */,
+				F88E978B1A10D77A00BA93F3 /* color-picker-ipad.png in Resources */,
+				F88E978A1A10D77A00BA93F3 /* color-picker-ipad-landscape.png in Resources */,
 				F83AD04A1A08FD9000519D0C /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,9 +596,43 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F83AD0451A08FD9000519D0C /* ViewController.m in Sources */,
+				F83AD0711A08FF6B00519D0C /* Room.m in Sources */,
 				F83AD0421A08FD9000519D0C /* AppDelegate.m in Sources */,
+				F885997F1A1B42740044C38A /* AFHTTPRequestOperationManager.m in Sources */,
+				F82649F41A0A208A00D0A0EA /* CreateRoomTableViewController.m in Sources */,
+				F83AD0BF1A09220900519D0C /* ProjectTableViewCell.m in Sources */,
+				F8FA05001A12329200BD6E1C /* RoomList.m in Sources */,
+				F82649EB1A09601000D0A0EA /* RoomTableViewController.m in Sources */,
+				F87107201A1391A300A10FB8 /* ChooseStartPointViewController.m in Sources */,
+				F88599861A1B42740044C38A /* AFURLSessionManager.m in Sources */,
+				F8FDFA221A19E3D700D50DC8 /* BookingDetailViewController.m in Sources */,
+				F88599801A1B42740044C38A /* AFHTTPSessionManager.m in Sources */,
+				F88599851A1B42740044C38A /* AFURLResponseSerialization.m in Sources */,
+				F885997E1A1B42740044C38A /* AFHTTPRequestOperation.m in Sources */,
+				F83AD0741A08FF7900519D0C /* Project.m in Sources */,
+				F88599841A1B42740044C38A /* AFURLRequestSerialization.m in Sources */,
+				F88E97901A10DAE800BA93F3 /* ColorPickerViewController.m in Sources */,
+				F88E97E01A111AA300BA93F3 /* ChooseRoomViewController.m in Sources */,
+				F82649EE1A09602100D0A0EA /* ProjectTableViewController.m in Sources */,
+				F83AD06E1A08FF5E00519D0C /* Booking.m in Sources */,
+				F8FA05061A1232BC00BD6E1C /* ProjectList.m in Sources */,
+				F83AD0B21A0921D000519D0C /* BookingTableViewCell.m in Sources */,
+				F82649F71A0A209300D0A0EA /* CreateProjectTableViewController.m in Sources */,
+				F83AD0791A091B9800519D0C /* TabBarViewController.m in Sources */,
+				F87107231A1391B300A10FB8 /* ChooseEndPointViewController.m in Sources */,
+				F82649E81A09600200D0A0EA /* BookingTableViewController.m in Sources */,
+				F88599811A1B42740044C38A /* AFNetworkReachabilityManager.m in Sources */,
+				F88E97861A10D77A00BA93F3 /* FCBrightDarkGradView.m in Sources */,
+				F88E97881A10D77A00BA93F3 /* README.md in Sources */,
+				F88E97871A10D77A00BA93F3 /* FCColorSwatchView.m in Sources */,
+				F88599831A1B42740044C38A /* AFURLConnectionOperation.m in Sources */,
+				F8FA05031A1232AF00BD6E1C /* BookingList.m in Sources */,
+				F82649F11A0A208400D0A0EA /* CreateBookingTableViewController.m in Sources */,
+				F88E97831A10D77A00BA93F3 /* FCColorPickerViewController.m in Sources */,
+				F83AD0B71A0921DD00519D0C /* RoomTableViewCell.m in Sources */,
 				F83AD03F1A08FD9000519D0C /* main.m in Sources */,
+				F88599821A1B42740044C38A /* AFSecurityPolicy.m in Sources */,
+				F8BC52DB1A13810D00E98E8C /* ChooseProjectViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +823,7 @@
 				F83AD05E1A08FD9000519D0C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F83AD05F1A08FD9000519D0C /* Build configuration list for PBXNativeTarget "HouseOfMeetingElephantsTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +832,7 @@
 				F83AD0611A08FD9000519D0C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
