@@ -18,14 +18,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self populateInterfaceWithReservation:self.detailBooking];
+    [self populateInterfaceWithBooking:self.detailBooking];
 }
 
 - (IBAction)dismissViewController:(id)sender {
     [self.delegate BookingDetailViewControllerDelegateDidGoBack:self];
 }
 
--(void)populateInterfaceWithReservation:(Booking *)booking {
+-(void)populateInterfaceWithBooking:(Booking *)booking {
     
     self.bookingLabel.text = booking.name;
     self.roomLabel.text = booking.room.name;
