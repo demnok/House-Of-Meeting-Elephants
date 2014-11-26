@@ -16,9 +16,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.roomPickerSource = [[NSMutableArray alloc] init];
-    self.roomPickerSource = [RoomList sharedInstance].rooms;
+    
+    [RoomList sharedInstance].delegate = self;
+    [[RoomList sharedInstance] fetchRooms];
+    
     self.roomPicker.delegate = self;
+
+}
+
+-(void)passData:(NSMutableArray *)data {
+    self.roomPickerSource = data;
+    [self.roomPicker reloadAllComponents];
 }
 
 #pragma mark Methods for UIPickerView
@@ -43,7 +51,9 @@
 }
 
 -(void)CreateRoomTableViewControllerDelegateDidSave:(CreateRoomTableViewController *)vc room:(Room *)room {
-    [[RoomList sharedInstance].rooms addObject:room];
+    
+    
+    [[RoomList sharedInstance] addRoom:room];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }

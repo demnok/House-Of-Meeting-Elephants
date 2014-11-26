@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "CreateRoomTableViewController.h"
 #import "RoomTableViewCell.h"
+#import "PassDataProtocol.h"
 
-@interface RoomTableViewController : UITableViewController <CreateRoomViewControllerDelegate>
+@interface RoomTableViewController : UITableViewController <CreateRoomViewControllerDelegate, PassDataProtocol>
 
 @end

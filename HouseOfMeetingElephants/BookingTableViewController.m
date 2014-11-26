@@ -18,7 +18,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [BookingList sharedInstance].delegate = self;
+    [[BookingList sharedInstance] fetchData];
     [self.tableView registerNib:[UINib nibWithNibName:@"BookingTableViewCell" bundle:nil] forCellReuseIdentifier:@"BookingTableViewCell"];
+}
+
+-(void)passData:(NSMutableArray *)data {
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

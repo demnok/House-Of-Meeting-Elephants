@@ -72,6 +72,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F81DE6231A1F79B800AB69CA /* PassDataProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassDataProtocol.h; sourceTree = "<group>"; };
 		F82649E61A09600200D0A0EA /* BookingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingTableViewController.h; sourceTree = "<group>"; };
 		F82649E71A09600200D0A0EA /* BookingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingTableViewController.m; sourceTree = "<group>"; };
 		F82649E91A09601000D0A0EA /* RoomTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomTableViewController.h; sourceTree = "<group>"; };
@@ -475,6 +476,7 @@
 			isa = PBXGroup;
 			children = (
 				F885998C1A1B9E380044C38A /* SingletonProtocol.h */,
+				F81DE6231A1F79B800AB69CA /* PassDataProtocol.h */,
 				F8FA04FE1A12329200BD6E1C /* RoomList.h */,
 				F8FA04FF1A12329200BD6E1C /* RoomList.m */,
 				F8FA05011A1232AF00BD6E1C /* BookingList.h */,

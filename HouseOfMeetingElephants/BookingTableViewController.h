@@ -12,6 +12,6 @@
 #import "CreateBookingTableViewController.h"
 #import "BookingDetailViewController.h"
 
-@interface BookingTableViewController : UITableViewController <CreateBookingViewControllerDelegate, BookingDetailViewControllerDelegate>
+@interface BookingTableViewController : UITableViewController <CreateBookingViewControllerDelegate, BookingDetailViewControllerDelegate, PassDataProtocol>
 
 @end

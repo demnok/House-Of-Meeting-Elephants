@@ -7,12 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SingletonProtocol.h"
 #import "Booking.h"
+#import "PassDataProtocol.h"
 
-@interface BookingList : NSObject
+@interface BookingList : NSObject <SingletonProtocol>
 
 @property (nonatomic, strong) NSMutableArray *bookings;
+@property (nonatomic, weak) id<PassDataProtocol>delegate;
 
-+ (BookingList *)sharedInstance;
+-(void)fetchData;
 
 @end

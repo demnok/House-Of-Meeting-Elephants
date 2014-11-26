@@ -1,4 +1,4 @@
-//
+ //
 //  RoomList.m
 //  HouseOfMeetingElephants
 //
@@ -7,8 +7,11 @@
 //
 
 #import "RoomList.h"
-#import "Room.h"
 #import "AFNetworking.h"
+
+@interface RoomList ()
+
+@end
 
 @implementation RoomList
 
@@ -22,24 +25,69 @@
     });
     
     return _roomList;
+    
+    
 }
 
-- (NSMutableArray *)rooms {
+- (void)fetchRooms {
     
-    if(!_rooms) {
-        _rooms = [NSMutableArray array];
-        
-        Room *testRoomOne = [[Room alloc] initWithRoomName:@"Room number one"];
-        [_rooms addObject:testRoomOne];
-        
-        Room *testRoomTwo = [[Room alloc] initWithRoomName:@"Room number two"];
-        [_rooms addObject:testRoomTwo];
-        
-        Room *testRoomThree = [[Room alloc] initWithRoomName:@"Room number three"];
-        [_rooms addObject:testRoomThree];
-    }
+    NSMutableArray *roomsToPass = [NSMutableArray array];
     
-    return _rooms;
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    
+    [manager GET:@"http://localhost:8001/room" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        for (NSDictionary *individualObject in responseObject) {
+            
+            Room *roomToAdd = [[Room alloc] init];
+            
+            roomToAdd.name = individualObject[@"name"];
+            roomToAdd.roomID = [NSString stringWithFormat:@"%@",individualObject[@"id"]];
+            [roomsToPass addObject:roomToAdd];
+            NSLog(@"%@",roomToAdd.name);
+        }
+        
+        self.rooms = roomsToPass;
+        [self.delegate passData:roomsToPass];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+}
+
+-(void)deleteRoom:(Room *)room {
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    [manager DELETE:[NSString stringWithFormat:@"%@%@",@"http://localhost:8001/room/", room.roomID] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        [self.rooms removeObject:room];
+        
+        [self.delegate passData:self.rooms];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    }];
+
+    
+}
+
+-(void)addRoom:(Room *)room {
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    NSDictionary *roomToSend = @{@"name" : room.name};
+    
+    [manager POST:@"http://localhost:8001/room" parameters:roomToSend success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        room.roomID = [NSString stringWithFormat:@"%@",(NSDictionary *)responseObject[@"id"]];
+        [self.rooms addObject:room];
+        
+        [self.delegate passData:self.rooms];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+
 }
 
 @end

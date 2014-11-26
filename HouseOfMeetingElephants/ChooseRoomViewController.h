@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "CreateRoomTableViewController.h"
 #import "ChooseRoomViewControllerDelegate.h"
+#import "PassDataProtocol.h"
 
-@interface ChooseRoomViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, CreateRoomViewControllerDelegate>
+@interface ChooseRoomViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, CreateRoomViewControllerDelegate, PassDataProtocol>
 
 @property(nonatomic, strong) NSMutableArray *roomPickerSource;
 @property (strong, nonatomic) IBOutlet UIPickerView *roomPicker;

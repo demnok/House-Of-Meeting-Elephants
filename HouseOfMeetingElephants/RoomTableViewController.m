@@ -16,8 +16,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [RoomList sharedInstance].delegate = self;
+    [[RoomList sharedInstance] fetchRooms];
     [self.tableView registerNib:[UINib nibWithNibName:@"RoomTableViewCell" bundle:nil] forCellReuseIdentifier:@"RoomTableViewCell"];
+}
+
+-(void)passData:(NSMutableArray *)data {
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -46,7 +51,13 @@
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if(editingStyle == UITableViewCellEditingStyleDelete) {
-        [[RoomList sharedInstance].rooms removeObjectAtIndex:indexPath.row];
+        
+        Room *room;
+        
+        room = [[Room alloc] init];
+        room = [[RoomList sharedInstance].rooms objectAtIndex:indexPath.row];
+        
+        [[RoomList sharedInstance] deleteRoom:room];
         [tableView reloadData];
     }
 }
@@ -63,7 +74,8 @@
 
 -(void)CreateRoomTableViewControllerDelegateDidSave:(CreateRoomTableViewController *)vc room:(Room *)room {
     
-    [[RoomList sharedInstance].rooms addObject:room];
+    
+    [[RoomList sharedInstance] addRoom:room];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

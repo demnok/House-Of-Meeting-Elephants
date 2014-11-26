@@ -7,6 +7,7 @@
 //
 
 #import "BookingList.h"
+#import "AFNetworking.h"
 
 @implementation BookingList
 
@@ -22,41 +23,44 @@
     return _bookingList;
 }
 
--(NSMutableArray *)bookings {
+-(void)fetchData {
+    NSMutableArray *bookingsToPass = [NSMutableArray array];
     
-    if (!_bookings) {
-        _bookings = [NSMutableArray array];
-        
-        NSCalendar *calendar = [NSCalendar currentCalendar];
-        
-        NSDateComponents *firstSetComponents = [[NSDateComponents alloc] init];
-        [firstSetComponents setYear:2014];
-        [firstSetComponents setMonth:11];
-        [firstSetComponents setDay:11];
-        [firstSetComponents setHour:11];
-        [firstSetComponents setMinute:0];
-        [firstSetComponents setSecond:0];
-        NSDate *firstDate = [calendar dateFromComponents:firstSetComponents];
-        
-        NSDateComponents *secondSetComponents = [[NSDateComponents alloc] init];
-        [secondSetComponents setYear:2014];
-        [secondSetComponents setMonth:11];
-        [secondSetComponents setDay:11];
-        [secondSetComponents setHour:12];
-        [secondSetComponents setMinute:0];
-        [secondSetComponents setSecond:0];
-        NSDate *secondDate = [calendar dateFromComponents:secondSetComponents];
-
-        
-        Room *testRoomOne = [[Room alloc] initWithRoomName:@"Room1"];
-        Project *testProjectOne = [[Project alloc] initWithName:@"Project1" andColor:[UIColor blueColor]];
-        
-        Booking *bookingOne = [[Booking alloc] initWithBookingName:@"Reservation1" bookingRoom:testRoomOne bookingStartDate:firstDate bookingEndDate:secondDate bookedByProject:testProjectOne recurrency:NO];
-        [_bookings addObject:bookingOne];
-        
-    }
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-    return _bookings;
+    [manager GET:@"http://localhost:8001/reservations" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateFormat = @"yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'zzz'Z'";
+        
+        for(NSDictionary *individualObject in responseObject[@"reservations"]) {
+            
+            Room *localRoom = [[Room alloc] initWithRoomName:@"Room"];
+            
+            Project *localProject = [[Project alloc] initWithName:@"project"
+                                                         andColor:[UIColor blueColor]];
+            
+            NSDate *startDate = [[NSDate alloc] init];
+            NSDate *endDate = [[NSDate alloc] init];
+            
+            startDate = [dateFormatter dateFromString:individualObject[@"startDate"]];
+            endDate = [dateFormatter dateFromString:individualObject[@"endDate"]];
+            
+            Booking *bookingToAdd = [[Booking alloc] initWithBookingName:individualObject[@"meetingName"]
+                                                             bookingRoom:localRoom
+                                                        bookingStartDate:startDate
+                                                          bookingEndDate:endDate
+                                                         bookedByProject:localProject
+                                                              recurrency:[individualObject[@"isRecurrent"] boolValue]];
+            
+            [bookingsToPass addObject:bookingToAdd];
+            }
+        
+        self.bookings = bookingsToPass;
+        [self.delegate passData:bookingsToPass];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    }];
 }
 
 @end

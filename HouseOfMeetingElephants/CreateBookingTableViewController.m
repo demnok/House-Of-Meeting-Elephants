@@ -47,6 +47,9 @@
         
         ChooseRoomViewController *destination = navigationController.viewControllers.firstObject;
         
+        [RoomList sharedInstance].delegate = destination;
+        [[RoomList sharedInstance] fetchRooms];
+        
         destination.delegate = self;
     }
     
@@ -144,47 +147,6 @@
     
     return formattedDate;
 }
-
-//-(void)goToRootFromRoomSelector:(UIStoryboardSegue *)segue{
-//    
-//    if([segue.sourceViewController isKindOfClass:[ChooseRoomViewController class]]) {
-//        ChooseRoomViewController *roomViewController = segue.sourceViewController;
-//        
-//        if([roomViewController.roomPickerSource count]) {
-//            self.booking.room = [roomViewController.roomPickerSource objectAtIndex:[roomViewController.roomPicker selectedRowInComponent:0]];
-//            self.roomLabel.text = self.booking.room.name;
-//        }
-//    }
-//    
-//    if([segue.sourceViewController isKindOfClass:[ChooseProjectViewController class]]) {
-//        ChooseProjectViewController *projectViewController = segue.sourceViewController;
-//        
-//        if([projectViewController.projectPickerSource count]) {
-//            self.booking.project = [projectViewController.projectPickerSource objectAtIndex:[projectViewController.projectPicker selectedRowInComponent:0]];
-//            self.assignedProjectLabel.text = self.booking.project.name;
-//        }
-//    }
-//    
-//    if ([segue.sourceViewController isKindOfClass:[ChooseStartPointViewController class]]) {
-//        ChooseStartPointViewController *startPointViewController = segue.sourceViewController;
-//        
-//        self.booking.startDate = [startPointViewController.startPointDatePicker date];
-//        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//        [dateFormatter setDateFormat:@"dd-MM-yyyy 'at' HH:mm"];
-//        
-//        self.startPointLabel.text = [dateFormatter stringFromDate:self.booking.startDate];
-//    }
-//    
-//    if ([segue.sourceViewController isKindOfClass:[ChooseEndPointViewController class]]) {
-//        ChooseEndPointViewController *startPointViewController = segue.sourceViewController;
-//        
-//        self.booking.endDate = [startPointViewController.endPointDatePicker date];
-//        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//        [dateFormatter setDateFormat:@"dd-MM-yyyy 'at' HH:mm"];
-//        
-//        self.endPointLabel.text = [dateFormatter stringFromDate:self.booking.endDate];
-//    }
-//}
 
 - (IBAction)saveBooking:(id)sender {
     self.booking.name = self.bookingNameTextField.text;

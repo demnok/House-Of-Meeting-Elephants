@@ -11,6 +11,7 @@
 @interface Room : NSObject
 
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *roomID;
 
 - (instancetype)initWithRoomName:(NSString *)name;
 
