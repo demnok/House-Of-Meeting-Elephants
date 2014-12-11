@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSDate *endDate;
 @property (nonatomic, strong) Project *project;
 @property (nonatomic, getter=isRecurrent) BOOL recurrent;
+@property (nonatomic, strong) NSString *bookingID;
 
 @property (nonatomic, readonly) NSString *intervalOfTime;
 

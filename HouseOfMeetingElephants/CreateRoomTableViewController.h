@@ -10,7 +10,7 @@
 #import "CreateRoomViewControllerDelegate.h"
 #import "RoomList.h"
 
-@interface CreateRoomTableViewController : UITableViewController <UITextViewDelegate>
+@interface CreateRoomTableViewController : UITableViewController <UITextViewDelegate, PassRoomsProtocol>
 
 @property (nonatomic, weak) id<CreateRoomViewControllerDelegate> delegate;
 

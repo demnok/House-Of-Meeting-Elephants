@@ -10,8 +10,9 @@
 #import "BookingTableViewCell.h"
 #import "BookingList.h"
 #import "CreateBookingTableViewController.h"
-#import "BookingDetailViewController.h"
+#import "BookingDetailTableViewController.h"
 
-@interface BookingTableViewController : UITableViewController <CreateBookingViewControllerDelegate, BookingDetailViewControllerDelegate, PassDataProtocol>
+@interface BookingTableViewController : UITableViewController <CreateBookingViewControllerDelegate, BookingDetailViewControllerDelegate, PassBookingsDelegate, PassRoomsProtocol, PassProjectsProtocol>
+
 
 @end

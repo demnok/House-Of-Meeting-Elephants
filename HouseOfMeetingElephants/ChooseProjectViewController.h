@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "CreateProjectTableViewController.h"
 #import "ChooseProjectViewControllerDelegate.h"
+#import "PassProjectsProtocol.h"
 
-@interface ChooseProjectViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, CreateProjectViewControllerDelegate>
+@interface ChooseProjectViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, CreateProjectViewControllerDelegate, PassProjectsProtocol>
 
 @property (strong, nonatomic) NSMutableArray *projectPickerSource;
 @property (weak, nonatomic) IBOutlet UIPickerView *projectPicker;

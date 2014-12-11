@@ -7,17 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SingletonProtocol.h"
-#import "PassDataProtocol.h"
+#import "PassRoomsProtocol.h"
 #import "Room.h"
 
-@interface RoomList : NSObject <SingletonProtocol>
+@interface RoomList : NSObject
 
 @property (nonatomic, strong) NSMutableArray *rooms;
-@property (nonatomic, weak) id<PassDataProtocol> delegate;
+@property (nonatomic, weak) id<PassRoomsProtocol> delegate;
 
 - (void)fetchRooms;
 - (void)deleteRoom:(Room *)room;
 - (void)addRoom:(Room *)room;
-
+- (void)updateRoom:(Room *)room;
 @end

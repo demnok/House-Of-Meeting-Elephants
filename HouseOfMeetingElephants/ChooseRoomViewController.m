@@ -10,6 +10,8 @@
 
 @interface ChooseRoomViewController ()
 
+@property (nonatomic, strong) RoomList *roomList;
+
 @end
 
 @implementation ChooseRoomViewController
@@ -17,15 +19,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [RoomList sharedInstance].delegate = self;
-    [[RoomList sharedInstance] fetchRooms];
+    self.roomList = [[RoomList alloc] init];
+    
+    self.roomList.delegate = self;
+    [self.roomList fetchRooms];
     
     self.roomPicker.delegate = self;
 
 }
 
--(void)passData:(NSMutableArray *)data {
-    self.roomPickerSource = data;
+-(void)passRooms:(NSMutableArray *)rooms {
+    self.roomPickerSource = rooms;
     [self.roomPicker reloadAllComponents];
 }
 
@@ -53,7 +57,7 @@
 -(void)CreateRoomTableViewControllerDelegateDidSave:(CreateRoomTableViewController *)vc room:(Room *)room {
     
     
-    [[RoomList sharedInstance] addRoom:room];
+    [self.roomList addRoom:room];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }

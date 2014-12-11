@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F81F9A4E1A36DE30002ED43A /* ProjectDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F81F9A4D1A36DE30002ED43A /* ProjectDetailTableViewController.m */; };
 		F82649E81A09600200D0A0EA /* BookingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F82649E71A09600200D0A0EA /* BookingTableViewController.m */; };
 		F82649EB1A09601000D0A0EA /* RoomTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F82649EA1A09601000D0A0EA /* RoomTableViewController.m */; };
 		F82649EE1A09602100D0A0EA /* ProjectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F82649ED1A09602100D0A0EA /* ProjectTableViewController.m */; };
@@ -54,11 +55,12 @@
 		F88E978D1A10D77A00BA93F3 /* color-picker-iphone-5.png in Resources */ = {isa = PBXBuildFile; fileRef = F88E97811A10D77A00BA93F3 /* color-picker-iphone-5.png */; };
 		F88E97901A10DAE800BA93F3 /* ColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F88E978F1A10DAE800BA93F3 /* ColorPickerViewController.m */; };
 		F88E97E01A111AA300BA93F3 /* ChooseRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F88E97DF1A111AA300BA93F3 /* ChooseRoomViewController.m */; };
+		F8BAE6401A308EF400B82CAA /* BookingDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BAE63F1A308EF400B82CAA /* BookingDetailTableViewController.m */; };
 		F8BC52DB1A13810D00E98E8C /* ChooseProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BC52DA1A13810D00E98E8C /* ChooseProjectViewController.m */; };
+		F8C13D621A35C89800F3BC0B /* RoomDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C13D611A35C89800F3BC0B /* RoomDetailTableViewController.m */; };
 		F8FA05001A12329200BD6E1C /* RoomList.m in Sources */ = {isa = PBXBuildFile; fileRef = F8FA04FF1A12329200BD6E1C /* RoomList.m */; };
 		F8FA05031A1232AF00BD6E1C /* BookingList.m in Sources */ = {isa = PBXBuildFile; fileRef = F8FA05021A1232AF00BD6E1C /* BookingList.m */; };
 		F8FA05061A1232BC00BD6E1C /* ProjectList.m in Sources */ = {isa = PBXBuildFile; fileRef = F8FA05051A1232BC00BD6E1C /* ProjectList.m */; };
-		F8FDFA221A19E3D700D50DC8 /* BookingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8FDFA211A19E3D700D50DC8 /* BookingDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +74,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F80604971A289BE1007A5280 /* PassRoomsProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassRoomsProtocol.h; sourceTree = "<group>"; };
+		F80604981A289BE9007A5280 /* PassProjectsProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassProjectsProtocol.h; sourceTree = "<group>"; };
 		F81DE6231A1F79B800AB69CA /* PassDataProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassDataProtocol.h; sourceTree = "<group>"; };
+		F81F9A4C1A36DE2F002ED43A /* ProjectDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectDetailTableViewController.h; sourceTree = "<group>"; };
+		F81F9A4D1A36DE30002ED43A /* ProjectDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectDetailTableViewController.m; sourceTree = "<group>"; };
+		F81F9A501A36E67F002ED43A /* ProjectDetailTableViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectDetailTableViewControllerDelegate.h; sourceTree = "<group>"; };
 		F82649E61A09600200D0A0EA /* BookingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingTableViewController.h; sourceTree = "<group>"; };
 		F82649E71A09600200D0A0EA /* BookingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingTableViewController.m; sourceTree = "<group>"; };
 		F82649E91A09601000D0A0EA /* RoomTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomTableViewController.h; sourceTree = "<group>"; };
@@ -160,8 +167,13 @@
 		F88E978F1A10DAE800BA93F3 /* ColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorPickerViewController.m; sourceTree = "<group>"; };
 		F88E97DE1A111AA300BA93F3 /* ChooseRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseRoomViewController.h; sourceTree = "<group>"; };
 		F88E97DF1A111AA300BA93F3 /* ChooseRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseRoomViewController.m; sourceTree = "<group>"; };
+		F8BAE63E1A308EF400B82CAA /* BookingDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingDetailTableViewController.h; sourceTree = "<group>"; };
+		F8BAE63F1A308EF400B82CAA /* BookingDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingDetailTableViewController.m; sourceTree = "<group>"; };
 		F8BC52D91A13810D00E98E8C /* ChooseProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseProjectViewController.h; sourceTree = "<group>"; };
 		F8BC52DA1A13810D00E98E8C /* ChooseProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseProjectViewController.m; sourceTree = "<group>"; };
+		F8C13D601A35C89800F3BC0B /* RoomDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomDetailTableViewController.h; sourceTree = "<group>"; };
+		F8C13D611A35C89800F3BC0B /* RoomDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomDetailTableViewController.m; sourceTree = "<group>"; };
+		F8C13D631A35D0DA00F3BC0B /* RoomDetailTableViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomDetailTableViewControllerDelegate.h; sourceTree = "<group>"; };
 		F8DD588F1A1608A300D00B2B /* CreateBookingViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateBookingViewControllerDelegate.h; sourceTree = "<group>"; };
 		F8DD58901A1616F500D00B2B /* CreateRoomViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateRoomViewControllerDelegate.h; sourceTree = "<group>"; };
 		F8DD58911A16233D00D00B2B /* CreateProjectViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateProjectViewControllerDelegate.h; sourceTree = "<group>"; };
@@ -171,8 +183,6 @@
 		F8FA05021A1232AF00BD6E1C /* BookingList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingList.m; sourceTree = "<group>"; };
 		F8FA05041A1232BC00BD6E1C /* ProjectList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectList.h; sourceTree = "<group>"; };
 		F8FA05051A1232BC00BD6E1C /* ProjectList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectList.m; sourceTree = "<group>"; };
-		F8FDFA201A19E3D700D50DC8 /* BookingDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingDetailViewController.h; sourceTree = "<group>"; };
-		F8FDFA211A19E3D700D50DC8 /* BookingDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingDetailViewController.m; sourceTree = "<group>"; };
 		F8FDFA231A19EA3000D50DC8 /* BookingDetailViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingDetailViewControllerDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -194,6 +204,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F81F9A4F1A36DE41002ED43A /* Detail Table View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F81F9A501A36E67F002ED43A /* ProjectDetailTableViewControllerDelegate.h */,
+				F81F9A4C1A36DE2F002ED43A /* ProjectDetailTableViewController.h */,
+				F81F9A4D1A36DE30002ED43A /* ProjectDetailTableViewController.m */,
+				F8C13D601A35C89800F3BC0B /* RoomDetailTableViewController.h */,
+				F8C13D631A35D0DA00F3BC0B /* RoomDetailTableViewControllerDelegate.h */,
+				F8C13D611A35C89800F3BC0B /* RoomDetailTableViewController.m */,
+				F8BAE63E1A308EF400B82CAA /* BookingDetailTableViewController.h */,
+				F8BAE63F1A308EF400B82CAA /* BookingDetailTableViewController.m */,
+				F8FDFA231A19EA3000D50DC8 /* BookingDetailViewControllerDelegate.h */,
+			);
+			name = "Detail Table View Controllers";
+			sourceTree = "<group>";
+		};
 		F82649E51A095FDC00D0A0EA /* Lists Table View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,9 +308,7 @@
 		F83AD0C11A09221200519D0C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F8FDFA201A19E3D700D50DC8 /* BookingDetailViewController.h */,
-				F8FDFA211A19E3D700D50DC8 /* BookingDetailViewController.m */,
-				F8FDFA231A19EA3000D50DC8 /* BookingDetailViewControllerDelegate.h */,
+				F81F9A4F1A36DE41002ED43A /* Detail Table View Controllers */,
 				F82649E51A095FDC00D0A0EA /* Lists Table View Controllers */,
 				F82649F81A0A209800D0A0EA /* Create View Controllers */,
 			);
@@ -477,6 +501,8 @@
 			children = (
 				F885998C1A1B9E380044C38A /* SingletonProtocol.h */,
 				F81DE6231A1F79B800AB69CA /* PassDataProtocol.h */,
+				F80604971A289BE1007A5280 /* PassRoomsProtocol.h */,
+				F80604981A289BE9007A5280 /* PassProjectsProtocol.h */,
 				F8FA04FE1A12329200BD6E1C /* RoomList.h */,
 				F8FA04FF1A12329200BD6E1C /* RoomList.m */,
 				F8FA05011A1232AF00BD6E1C /* BookingList.h */,
@@ -536,6 +562,7 @@
 				TargetAttributes = {
 					F83AD0381A08FD9000519D0C = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = S92WAH49L4;
 					};
 					F83AD0511A08FD9000519D0C = {
 						CreatedOnToolsVersion = 6.1;
@@ -607,7 +634,6 @@
 				F82649EB1A09601000D0A0EA /* RoomTableViewController.m in Sources */,
 				F87107201A1391A300A10FB8 /* ChooseStartPointViewController.m in Sources */,
 				F88599861A1B42740044C38A /* AFURLSessionManager.m in Sources */,
-				F8FDFA221A19E3D700D50DC8 /* BookingDetailViewController.m in Sources */,
 				F88599801A1B42740044C38A /* AFHTTPSessionManager.m in Sources */,
 				F88599851A1B42740044C38A /* AFURLResponseSerialization.m in Sources */,
 				F885997E1A1B42740044C38A /* AFHTTPRequestOperation.m in Sources */,
@@ -622,8 +648,10 @@
 				F82649F71A0A209300D0A0EA /* CreateProjectTableViewController.m in Sources */,
 				F83AD0791A091B9800519D0C /* TabBarViewController.m in Sources */,
 				F87107231A1391B300A10FB8 /* ChooseEndPointViewController.m in Sources */,
+				F8BAE6401A308EF400B82CAA /* BookingDetailTableViewController.m in Sources */,
 				F82649E81A09600200D0A0EA /* BookingTableViewController.m in Sources */,
 				F88599811A1B42740044C38A /* AFNetworkReachabilityManager.m in Sources */,
+				F81F9A4E1A36DE30002ED43A /* ProjectDetailTableViewController.m in Sources */,
 				F88E97861A10D77A00BA93F3 /* FCBrightDarkGradView.m in Sources */,
 				F88E97881A10D77A00BA93F3 /* README.md in Sources */,
 				F88E97871A10D77A00BA93F3 /* FCColorSwatchView.m in Sources */,
@@ -635,6 +663,7 @@
 				F83AD03F1A08FD9000519D0C /* main.m in Sources */,
 				F88599821A1B42740044C38A /* AFSecurityPolicy.m in Sources */,
 				F8BC52DB1A13810D00E98E8C /* ChooseProjectViewController.m in Sources */,
+				F8C13D621A35C89800F3BC0B /* RoomDetailTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -756,9 +785,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HouseOfMeetingElephants/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -766,9 +798,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HouseOfMeetingElephants/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

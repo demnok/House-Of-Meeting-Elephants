@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) UIColor *color;
+@property (nonatomic, strong) NSString *projectID;
 
 - (instancetype)initWithName:(NSString *)name andColor:(UIColor *)color;
 

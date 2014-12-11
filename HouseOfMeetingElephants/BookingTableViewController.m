@@ -10,17 +10,46 @@
 
 @interface BookingTableViewController ()
 
+@property (nonatomic, strong) BookingList *bookingList;
+@property (nonatomic, strong) ProjectList *projectList;
+@property (nonatomic, strong) RoomList *roomList;
+
 @property (nonatomic, strong) Booking *sentBooking;
 
 @end
 
 @implementation BookingTableViewController
 
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    self.roomList = [[RoomList alloc] init];
+    
+    self.roomList.delegate = self;
+    [self.roomList fetchRooms];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [BookingList sharedInstance].delegate = self;
-    [[BookingList sharedInstance] fetchData];
+    
+    self.bookingList = [[BookingList alloc] init];
+    self.projectList = [[ProjectList alloc] init];
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"BookingTableViewCell" bundle:nil] forCellReuseIdentifier:@"BookingTableViewCell"];
+}
+
+-(void)passRooms:(NSMutableArray *)rooms {
+    [self.tableView reloadData];
+    
+    self.projectList.delegate = self;
+    [self.projectList fetchProjects];
+}
+
+-(void)passProjects:(NSMutableArray *)projects {
+    [self.tableView reloadData];
+    
+    self.bookingList.delegate = self;
+    [self.bookingList fetchDataForBookingsFromRoomList:self.roomList andFromProjectList:self.projectList];
 }
 
 -(void)passData:(NSMutableArray *)data {
@@ -40,15 +69,22 @@
 
 -(void)createBookingViewControllerDelegateDidSave:(CreateBookingTableViewController *)vc booking:(Booking *)booking {
     
-    [[BookingList sharedInstance].bookings addObject:booking];
+    [self.bookingList addBooking:booking];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark Methods for Booking Detail View Controller Delegate
 
--(void)BookingDetailViewControllerDelegateDidGoBack:(BookingDetailViewController *)vc {
+-(void)BookingDetailViewControllerDelegateDidGoBack:(BookingDetailTableViewController *)vc {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)BookingDetailViewControllerDelegateDidUpdate:(BookingDetailTableViewController *)vc withBooking:(Booking *)booking {
+    
+    [self.bookingList updateBooking:booking];
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 #pragma mark Prepare for segue
@@ -67,7 +103,8 @@
         
         UINavigationController *navigationController = segue.destinationViewController;
      
-        BookingDetailViewController *destination = navigationController.viewControllers.firstObject;
+        BookingDetailTableViewController *destination = navigationController.viewControllers.firstObject;
+        
         destination.detailBooking = self.sentBooking;
         destination.delegate = self;
     }
@@ -82,14 +119,14 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [BookingList sharedInstance].bookings.count;
+    return self.bookingList.bookings.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     BookingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BookingTableViewCell"];
     
-    cell.currentBooking = [BookingList sharedInstance].bookings[indexPath.row];
+    cell.currentBooking = self.bookingList.bookings[indexPath.row];
     
     return cell;
 }
@@ -100,15 +137,15 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    self.sentBooking = [BookingList sharedInstance].bookings[indexPath.row];
+    self.sentBooking = self.bookingList.bookings[indexPath.row];
     
     [self performSegueWithIdentifier:@"bookingDetail" sender:nil];
 }
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if(editingStyle == UITableViewCellEditingStyleDelete) {
-        [[BookingList sharedInstance].bookings removeObjectAtIndex:indexPath.row];
-        [tableView reloadData];
+        Booking *booking = [self.bookingList.bookings objectAtIndex:indexPath.row];
+        [self.bookingList deleteBooking:booking];
     }
 }
 

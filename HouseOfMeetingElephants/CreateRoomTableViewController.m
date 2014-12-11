@@ -12,6 +12,7 @@
 @interface CreateRoomTableViewController ()
 
 @property (nonatomic, strong) Room *room;
+@property (nonatomic, strong) RoomList *roomList;
 
 @end
 
@@ -21,11 +22,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.roomList = [[RoomList alloc] init];
     self.room = [[Room alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+-(void)passRooms:(NSMutableArray *)rooms {
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -51,12 +57,19 @@
  }
 
 - (IBAction)cancelRoom:(id)sender {
+    
+    self.roomList.delegate = self;
+    [self.roomList fetchRooms];
+    
     [self.delegate CreateRoomTableViewControllerDelegateDidCancel:self];
 }
 
 - (IBAction)saveRoom:(id)sender {
     
     self.room.name = self.roomNameTextField.text;
+    
+    self.roomList.delegate = self;
+    [self.roomList fetchRooms];
     
     [self.delegate CreateRoomTableViewControllerDelegateDidSave:self room:self.room];
 }

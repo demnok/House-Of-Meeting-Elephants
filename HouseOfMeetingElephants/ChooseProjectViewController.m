@@ -10,15 +10,29 @@
 
 @interface ChooseProjectViewController ()
 
+@property (nonatomic, strong) ProjectList *projectList;
+
 @end
 
 @implementation ChooseProjectViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.projectList = [[ProjectList alloc] init];
+
+    self.projectList.delegate = self;
+    [self.projectList fetchProjects];
+    
     self.projectPickerSource = [[NSMutableArray alloc] init];
-    self.projectPickerSource = [ProjectList sharedInstance].projects;
+    self.projectPickerSource = self.projectList.projects;
+    
     self.projectPicker.delegate = self;
+}
+
+-(void)passProjects:(NSMutableArray *)projects {
+    self.projectPickerSource = self.projectList.projects;
+    [self.projectPicker reloadAllComponents];
 }
 
 # pragma-mark Methods for the UIPickerView delegate
@@ -42,7 +56,7 @@
 }
 
 -(void)CreateProjectTableViewControllerDelegateDidSave:(CreateProjectTableViewController *)vc project:(Project *)project {
-    [[ProjectList sharedInstance].projects addObject:project];
+    [self.projectList addProject:project];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }

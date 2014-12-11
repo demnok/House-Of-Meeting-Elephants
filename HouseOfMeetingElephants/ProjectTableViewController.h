@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "CreateProjectTableViewController.h"
 #import "ProjectTableViewCell.h"
+#import "PassProjectsProtocol.h"
+#import "ProjectDetailTableViewController.h"
 
-@interface ProjectTableViewController : UITableViewController <CreateProjectViewControllerDelegate>
+@interface ProjectTableViewController : UITableViewController <CreateProjectViewControllerDelegate, PassProjectsProtocol, ProjectDetailTableViewControllerDelegate>
+
 
 @end

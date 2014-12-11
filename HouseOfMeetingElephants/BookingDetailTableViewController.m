@@ -1,46 +1,43 @@
 //
-//  CreateBookingTableViewController.m
+//  BookingDetailTableViewController.m
 //  HouseOfMeetingElephants
 //
-//  Created by Stolniceanu Stefan on 05/11/14.
+//  Created by Stolniceanu Stefan on 04/12/14.
 //  Copyright (c) 2014 Stefan Stolniceanu. All rights reserved.
 //
 
-#import "CreateBookingTableViewController.h"
-#import "BookingList.h"
+#import "BookingDetailTableViewController.h"
 
-@interface CreateBookingTableViewController ()
+@interface BookingDetailTableViewController ()
 
-@property (strong, nonatomic) Booking *booking;
 @property (strong, nonatomic) RoomList *roomList;
 
 @end
 
-@implementation CreateBookingTableViewController
+@implementation BookingDetailTableViewController
 
-@synthesize roomLabel, startPointLabel, endPointLabel, assignedProjectLabel, isRecurrent, bookingNameTextField, delegate;
+@synthesize detailBooking, roomLabel, startPointLabel, endPointLabel, assignedProjectLabel, isRecurrent, bookingNameTextField, delegate;
 
-- (void)viewDidLoad {
+-(void)viewDidLoad {
     [super viewDidLoad];
-    [self initialDeclaration];
-    self.bookingNameTextField.delegate = self;
-    self.booking = [[Booking alloc] init];
+    [self populateInterfaceWithBooking:self.detailBooking];
 }
 
--(void)passRooms:(NSMutableArray *)rooms {
-    [self.tableView reloadData];
-}
-
--(void)initialDeclaration {
-    NSMutableArray *labelArray = [[NSMutableArray alloc] init];
-    [labelArray addObject:self.roomLabel];
-    [labelArray addObject:self.startPointLabel];
-    [labelArray addObject:self.endPointLabel];
-    [labelArray addObject:self.assignedProjectLabel];
+-(void)populateInterfaceWithBooking:(Booking *)booking {
     
-    for(UILabel *label in labelArray) {
-        label.text = @"Not yet chosen";
-    }
+    self.bookingNameTextField.text = booking.name;
+    self.roomLabel.text = booking.room.name;
+    [self.isRecurrent setOn:booking.isRecurrent animated:YES];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd-HH:mm"];
+    
+    self.startPointLabel.text = [dateFormatter stringFromDate:booking.startDate];
+    self.endPointLabel.text = [dateFormatter stringFromDate:booking.endDate];
+
+    self.assignedProjectLabel.text = booking.project.name;
+    self.assignedProjectLabel.textColor = booking.project.color;
+    
 }
 
 #pragma mark Prepare for segue
@@ -94,7 +91,7 @@
 
 -(void)ChooseRoomViewControllerDelegateDidSave:(ChooseRoomViewController *)vc withRoom:(Room *)room {
     
-    self.booking.room = room;
+    self.detailBooking.room = room;
     self.roomLabel.text = room.name;
     
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -108,7 +105,7 @@
 
 -(void)ChooseProjectViewControllerDelegateDidSave:(ChooseProjectViewController *)vc withProject:(Project *)project {
     
-    self.booking.project = project;
+    self.detailBooking.project = project;
     self.assignedProjectLabel.text = project.name;
     self.assignedProjectLabel.textColor = project.color;
     
@@ -123,7 +120,7 @@
 
 -(void)ChooseStartPointViewControllerDelegateDidSave:(ChooseStartPointViewController *)vc withDate:(NSDate *)date {
     
-    self.booking.startDate = date;
+    self.detailBooking.startDate = date;
     self.startPointLabel.text = [self convertDateToString:date];
     
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -137,7 +134,7 @@
 
 -(void)ChooseEndPointViewControllerDelegateDidSave:(ChooseEndPointViewController *)vc withDate:(NSDate *)date {
     
-    self.booking.endDate = date;
+    self.detailBooking.endDate = date;
     self.endPointLabel.text = [self convertDateToString:date];
     
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -153,51 +150,31 @@
     return formattedDate;
 }
 
-- (IBAction)saveBooking:(id)sender {
-    self.booking.name = self.bookingNameTextField.text;
-    self.booking.recurrent = self.isRecurrent.isOn;
-
-    if (!self.booking.project) {
-        self.booking.project = [[Project alloc] init];
-        self.booking.project.projectID = @"No project";
-    }
-
-    if (!self.booking.room) {
-        self.booking.room = [[Room alloc] init];
-        self.booking.room.roomID = @"No room";
-    }
-    
-    if (!self.booking.endDate || !self.booking.startDate) {
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Date not found" message:@"Please choose both dates before proceeding"  delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        
-        [alert show];
-        
-    } else {
-    
-        [self.delegate createBookingViewControllerDelegateDidSave:self booking:self.booking];
-        
-    }
-}
-
-- (IBAction)cancelBooking:(id)sender {
-    [self.delegate createBookingViewControllerDelegateDidCancel:self];
-}
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [super tableView:tableView numberOfRowsInSection:section];
 }
 
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     [[super tableView:tableView cellForRowAtIndexPath:indexPath] setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     return [super tableView:tableView cellForRowAtIndexPath:indexPath];
 }
 
+- (IBAction)goBack:(id)sender {
+    [self.delegate BookingDetailViewControllerDelegateDidGoBack:self];
+}
+
+- (IBAction)updateBooking:(id)sender {
+    self.detailBooking.name = self.bookingNameTextField.text;
+    self.detailBooking.recurrent = self.isRecurrent.isOn;
+    
+    [self.delegate BookingDetailViewControllerDelegateDidUpdate:self
+                                                    withBooking:self.detailBooking];
+}
 @end

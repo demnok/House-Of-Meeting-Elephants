@@ -7,10 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SingletonProtocol.h"
 #import "Project.h"
+#import "PassProjectsProtocol.h"
 
-@interface ProjectList : NSObject <SingletonProtocol>
+@interface ProjectList : NSObject 
 
 @property (nonatomic, strong) NSMutableArray *projects;
+
+@property (nonatomic, weak) id<PassProjectsProtocol>delegate;
+
+-(void)fetchProjects;
+-(void)addProject:(Project *)project;
+-(void)deleteProject:(Project *)project;
+-(void)updateProject:(Project *)project;
+
 @end

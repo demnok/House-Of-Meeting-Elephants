@@ -10,18 +10,28 @@
 
 @interface RoomTableViewController ()
 
+@property (nonatomic, strong) Room *sentRoom;
+@property (nonatomic, strong) RoomList *roomList;
+
 @end
 
 @implementation RoomTableViewController
 
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    self.roomList = [[RoomList alloc] init];
+    [self.roomList fetchRooms];
+    self.roomList.delegate = self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [RoomList sharedInstance].delegate = self;
-    [[RoomList sharedInstance] fetchRooms];
+   
     [self.tableView registerNib:[UINib nibWithNibName:@"RoomTableViewCell" bundle:nil] forCellReuseIdentifier:@"RoomTableViewCell"];
 }
 
--(void)passData:(NSMutableArray *)data {
+-(void)passRooms:(NSMutableArray *)rooms {
     [self.tableView reloadData];
 }
 
@@ -32,7 +42,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [RoomList sharedInstance].rooms.count;
+    return self.roomList.rooms.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -40,9 +50,15 @@
     RoomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RoomTableViewCell"];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.currentRoom = [RoomList sharedInstance].rooms[indexPath.row];
+    cell.currentRoom = self.roomList.rooms[indexPath.row];
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.sentRoom = self.roomList.rooms[indexPath.row];
+    
+    [self performSegueWithIdentifier:@"roomDetail" sender:nil];
 }
 
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -52,13 +68,9 @@
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if(editingStyle == UITableViewCellEditingStyleDelete) {
         
-        Room *room;
+        Room *room = [self.roomList.rooms objectAtIndex:indexPath.row];
         
-        room = [[Room alloc] init];
-        room = [[RoomList sharedInstance].rooms objectAtIndex:indexPath.row];
-        
-        [[RoomList sharedInstance] deleteRoom:room];
-        [tableView reloadData];
+        [self.roomList deleteRoom:room];
     }
 }
 
@@ -75,10 +87,22 @@
 -(void)CreateRoomTableViewControllerDelegateDidSave:(CreateRoomTableViewController *)vc room:(Room *)room {
     
     
-    [[RoomList sharedInstance] addRoom:room];
+    [self.roomList addRoom:room];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark Methods for the Booking Detail Table View Controller Delegate
+
+-(void)RoomDetailTableViewControllerDelegateDidGoBack:(RoomDetailTableViewController *)vc {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)RoomDetailTableViewControllerDelegateDidUpdate:(RoomDetailTableViewController *)vc withRoom:(Room *)room {
+    
+    [self.roomList updateRoom:room];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
 #pragma mark Prepare for segue
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -91,6 +115,17 @@
         
         destination.delegate = self;
     }
+    
+    if([segue.identifier isEqualToString:@"roomDetail"]) {
+        
+        UINavigationController *navigationController = segue.destinationViewController;
+        
+        RoomDetailTableViewController *destination = navigationController.viewControllers.firstObject;
+        
+        destination.detailRoom = self.sentRoom;
+        destination.delegate = self;
+    }
+    
 }
 
 @end

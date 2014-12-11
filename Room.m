@@ -10,10 +10,10 @@
 
 @implementation Room
 
-- (instancetype)initWithRoomName:(NSString *)name {
+- (instancetype)initWithRoomName:(NSString *)roomName {
     self = [super init];
     if(self) {
-        self.name = name;
+        self.name = roomName;
     }
     
     return self;

@@ -1,17 +1,18 @@
 //
-//  PassDataProtocol.h
+//  PassRoomsProtocol.h
 //  HouseOfMeetingElephants
 //
-//  Created by Stolniceanu Stefan on 21/11/14.
+//  Created by Stolniceanu Stefan on 28/11/14.
 //  Copyright (c) 2014 Stefan Stolniceanu. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
 @class NSMutableArray;
+@class Room;
 
-@protocol PassBookingsDelegate <NSObject>
+@protocol PassRoomsProtocol <NSObject>
 
--(void)passData:(NSMutableArray *)data;
+-(void)passRooms:(NSMutableArray *)rooms;
 
 @end

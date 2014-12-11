@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@class BookingDetailViewController;
+@class BookingDetailTableViewController;
+@class Booking;
 
 @protocol BookingDetailViewControllerDelegate <NSObject>
 
--(void)BookingDetailViewControllerDelegateDidGoBack:(BookingDetailViewController *)vc;
+-(void)BookingDetailViewControllerDelegateDidGoBack:(BookingDetailTableViewController *)vc;
+-(void)BookingDetailViewControllerDelegateDidUpdate:(BookingDetailTableViewController *)vc withBooking:(Booking *)booking;
 
 @end
