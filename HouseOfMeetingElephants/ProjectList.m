@@ -15,7 +15,7 @@
 
 -(NSString *)host{
     NSString *host = [[NSString alloc] init];
-    host = @"http://192.168.0.199:8001/project/";
+    host = @"http://localhost:8001/project/";
     
     return host;
 }
