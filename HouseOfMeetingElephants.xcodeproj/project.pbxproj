@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		F8211E691A40329C00B35552 /* OCLint */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = F8211E6C1A40329C00B35552 /* Build configuration list for PBXAggregateTarget "OCLint" */;
+			buildPhases = (
+				F8211E6D1A40348000B35552 /* Run Script */,
+			);
+			dependencies = (
+			);
+			name = OCLint;
+			productName = OCLint;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		F81F9A4E1A36DE30002ED43A /* ProjectDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F81F9A4D1A36DE30002ED43A /* ProjectDetailTableViewController.m */; };
 		F82649E81A09600200D0A0EA /* BookingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F82649E71A09600200D0A0EA /* BookingTableViewController.m */; };
@@ -22,7 +36,6 @@
 		F83AD0591A08FD9000519D0C /* HouseOfMeetingElephantsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F83AD0581A08FD9000519D0C /* HouseOfMeetingElephantsTests.m */; };
 		F83AD06E1A08FF5E00519D0C /* Booking.m in Sources */ = {isa = PBXBuildFile; fileRef = F83AD06D1A08FF5E00519D0C /* Booking.m */; };
 		F83AD0711A08FF6B00519D0C /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = F83AD0701A08FF6B00519D0C /* Room.m */; };
-		F83AD0741A08FF7900519D0C /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = F83AD0731A08FF7900519D0C /* Project.m */; };
 		F83AD0791A091B9800519D0C /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F83AD0781A091B9800519D0C /* TabBarViewController.m */; };
 		F83AD0B21A0921D000519D0C /* BookingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F83AD0B01A0921D000519D0C /* BookingTableViewCell.m */; };
 		F83AD0B31A0921D000519D0C /* BookingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F83AD0B11A0921D000519D0C /* BookingTableViewCell.xib */; };
@@ -47,7 +60,7 @@
 		F88E97851A10D77A00BA93F3 /* iOS-Color-Picker.podspec in Resources */ = {isa = PBXBuildFile; fileRef = F88E97741A10D77A00BA93F3 /* iOS-Color-Picker.podspec */; };
 		F88E97861A10D77A00BA93F3 /* FCBrightDarkGradView.m in Sources */ = {isa = PBXBuildFile; fileRef = F88E97771A10D77A00BA93F3 /* FCBrightDarkGradView.m */; };
 		F88E97871A10D77A00BA93F3 /* FCColorSwatchView.m in Sources */ = {isa = PBXBuildFile; fileRef = F88E97791A10D77A00BA93F3 /* FCColorSwatchView.m */; };
-		F88E97881A10D77A00BA93F3 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = F88E977A1A10D77A00BA93F3 /* README.md */; };
+		F88E97881A10D77A00BA93F3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F88E977A1A10D77A00BA93F3 /* README.md */; };
 		F88E97891A10D77A00BA93F3 /* colormap.png in Resources */ = {isa = PBXBuildFile; fileRef = F88E977C1A10D77A00BA93F3 /* colormap.png */; };
 		F88E978A1A10D77A00BA93F3 /* color-picker-ipad-landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = F88E977E1A10D77A00BA93F3 /* color-picker-ipad-landscape.png */; };
 		F88E978B1A10D77A00BA93F3 /* color-picker-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F88E977F1A10D77A00BA93F3 /* color-picker-ipad.png */; };
@@ -55,6 +68,7 @@
 		F88E978D1A10D77A00BA93F3 /* color-picker-iphone-5.png in Resources */ = {isa = PBXBuildFile; fileRef = F88E97811A10D77A00BA93F3 /* color-picker-iphone-5.png */; };
 		F88E97901A10DAE800BA93F3 /* ColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F88E978F1A10DAE800BA93F3 /* ColorPickerViewController.m */; };
 		F88E97E01A111AA300BA93F3 /* ChooseRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F88E97DF1A111AA300BA93F3 /* ChooseRoomViewController.m */; };
+		F8AB3D521A4842C000C37852 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = F8AB3D511A4842C000C37852 /* Project.m */; };
 		F8BAE6401A308EF400B82CAA /* BookingDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BAE63F1A308EF400B82CAA /* BookingDetailTableViewController.m */; };
 		F8BC52DB1A13810D00E98E8C /* ChooseProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BC52DA1A13810D00E98E8C /* ChooseProjectViewController.m */; };
 		F8C13D621A35C89800F3BC0B /* RoomDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C13D611A35C89800F3BC0B /* RoomDetailTableViewController.m */; };
@@ -107,8 +121,6 @@
 		F83AD06D1A08FF5E00519D0C /* Booking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Booking.m; path = ../Booking.m; sourceTree = "<group>"; };
 		F83AD06F1A08FF6B00519D0C /* Room.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Room.h; path = ../Room.h; sourceTree = "<group>"; };
 		F83AD0701A08FF6B00519D0C /* Room.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Room.m; path = ../Room.m; sourceTree = "<group>"; };
-		F83AD0721A08FF7900519D0C /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Project.h; path = ../Project.h; sourceTree = "<group>"; };
-		F83AD0731A08FF7900519D0C /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Project.m; path = ../Project.m; sourceTree = "<group>"; };
 		F83AD0771A091B9800519D0C /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
 		F83AD0781A091B9800519D0C /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
 		F83AD0AF1A0921D000519D0C /* BookingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingTableViewCell.h; sourceTree = "<group>"; };
@@ -167,6 +179,8 @@
 		F88E978F1A10DAE800BA93F3 /* ColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorPickerViewController.m; sourceTree = "<group>"; };
 		F88E97DE1A111AA300BA93F3 /* ChooseRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseRoomViewController.h; sourceTree = "<group>"; };
 		F88E97DF1A111AA300BA93F3 /* ChooseRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseRoomViewController.m; sourceTree = "<group>"; };
+		F8AB3D501A4842C000C37852 /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
+		F8AB3D511A4842C000C37852 /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
 		F8BAE63E1A308EF400B82CAA /* BookingDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingDetailTableViewController.h; sourceTree = "<group>"; };
 		F8BAE63F1A308EF400B82CAA /* BookingDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingDetailTableViewController.m; sourceTree = "<group>"; };
 		F8BC52D91A13810D00E98E8C /* ChooseProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseProjectViewController.h; sourceTree = "<group>"; };
@@ -490,8 +504,8 @@
 				F83AD06D1A08FF5E00519D0C /* Booking.m */,
 				F83AD06F1A08FF6B00519D0C /* Room.h */,
 				F83AD0701A08FF6B00519D0C /* Room.m */,
-				F83AD0721A08FF7900519D0C /* Project.h */,
-				F83AD0731A08FF7900519D0C /* Project.m */,
+				F8AB3D501A4842C000C37852 /* Project.h */,
+				F8AB3D511A4842C000C37852 /* Project.m */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -560,6 +574,9 @@
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Stefan Stolniceanu";
 				TargetAttributes = {
+					F8211E691A40329C00B35552 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
 					F83AD0381A08FD9000519D0C = {
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = S92WAH49L4;
@@ -585,6 +602,7 @@
 			targets = (
 				F83AD0381A08FD9000519D0C /* HouseOfMeetingElephants */,
 				F83AD0511A08FD9000519D0C /* HouseOfMeetingElephantsTests */,
+				F8211E691A40329C00B35552 /* OCLint */,
 			);
 		};
 /* End PBXProject section */
@@ -594,6 +612,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F88E97881A10D77A00BA93F3 /* README.md in Resources */,
 				F88E97891A10D77A00BA93F3 /* colormap.png in Resources */,
 				F88E97851A10D77A00BA93F3 /* iOS-Color-Picker.podspec in Resources */,
 				F83AD0B81A0921DD00519D0C /* RoomTableViewCell.xib in Resources */,
@@ -620,6 +639,23 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		F8211E6D1A40348000B35552 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "source ~/.bash_profile\nhash oclint &amp;&gt; /dev/null\nif [ $? -eq 1 ]; then\necho &amp;&gt;2 &quot;oclint not found, analyzing stopped&quot;\nexit 1\nfi\n\ncd ${TARGET_TEMP_DIR}\n\nif [ ! -f compile_commands.json ]; then\necho &quot;[*] compile_commands.json not found, possibly clean was performed&quot;\necho &quot;[*] starting xcodebuild to rebuild the project..&quot;\n# clean previous output\nif [ -f xcodebuild.log ]; then\nrm xcodebuild.log\nfi\n\ncd ${SRCROOT}\n\nxcodebuild clean\n\n#build xcodebuild.log\nxcodebuild | tee ${TARGET_TEMP_DIR}/xcodebuild.log\n\necho &quot;[*] transforming xcodebuild.log into compile_commands.json...&quot;\ncd ${TARGET_TEMP_DIR}\n#transform it into compile_commands.json\noclint-xcodebuild\n\nfi\n\n#if [-d report.html]; then\n#rm report.html\n#fi\n\n#run static analyzer\n#oclint-json-compilation-database -- -o=./report.html -html\n\necho &quot;[*] starting analyzing&quot;\ncd ${TARGET_TEMP_DIR}\noclint-json-compilation-database | sed 's/\\(.*\\.\\m\\{1,2\\}:[0-9]*:[0-9]*:\\)/\\1 warning:/";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F83AD0351A08FD9000519D0C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -637,29 +673,28 @@
 				F88599801A1B42740044C38A /* AFHTTPSessionManager.m in Sources */,
 				F88599851A1B42740044C38A /* AFURLResponseSerialization.m in Sources */,
 				F885997E1A1B42740044C38A /* AFHTTPRequestOperation.m in Sources */,
-				F83AD0741A08FF7900519D0C /* Project.m in Sources */,
 				F88599841A1B42740044C38A /* AFURLRequestSerialization.m in Sources */,
 				F88E97901A10DAE800BA93F3 /* ColorPickerViewController.m in Sources */,
+				F83AD06E1A08FF5E00519D0C /* Booking.m in Sources */,
 				F88E97E01A111AA300BA93F3 /* ChooseRoomViewController.m in Sources */,
 				F82649EE1A09602100D0A0EA /* ProjectTableViewController.m in Sources */,
-				F83AD06E1A08FF5E00519D0C /* Booking.m in Sources */,
 				F8FA05061A1232BC00BD6E1C /* ProjectList.m in Sources */,
 				F83AD0B21A0921D000519D0C /* BookingTableViewCell.m in Sources */,
 				F82649F71A0A209300D0A0EA /* CreateProjectTableViewController.m in Sources */,
 				F83AD0791A091B9800519D0C /* TabBarViewController.m in Sources */,
+				F8AB3D521A4842C000C37852 /* Project.m in Sources */,
 				F87107231A1391B300A10FB8 /* ChooseEndPointViewController.m in Sources */,
 				F8BAE6401A308EF400B82CAA /* BookingDetailTableViewController.m in Sources */,
 				F82649E81A09600200D0A0EA /* BookingTableViewController.m in Sources */,
 				F88599811A1B42740044C38A /* AFNetworkReachabilityManager.m in Sources */,
 				F81F9A4E1A36DE30002ED43A /* ProjectDetailTableViewController.m in Sources */,
-				F88E97861A10D77A00BA93F3 /* FCBrightDarkGradView.m in Sources */,
-				F88E97881A10D77A00BA93F3 /* README.md in Sources */,
-				F88E97871A10D77A00BA93F3 /* FCColorSwatchView.m in Sources */,
 				F88599831A1B42740044C38A /* AFURLConnectionOperation.m in Sources */,
 				F8FA05031A1232AF00BD6E1C /* BookingList.m in Sources */,
 				F82649F11A0A208400D0A0EA /* CreateBookingTableViewController.m in Sources */,
-				F88E97831A10D77A00BA93F3 /* FCColorPickerViewController.m in Sources */,
 				F83AD0B71A0921DD00519D0C /* RoomTableViewCell.m in Sources */,
+				F88E97861A10D77A00BA93F3 /* FCBrightDarkGradView.m in Sources */,
+				F88E97871A10D77A00BA93F3 /* FCColorSwatchView.m in Sources */,
+				F88E97831A10D77A00BA93F3 /* FCColorPickerViewController.m in Sources */,
 				F83AD03F1A08FD9000519D0C /* main.m in Sources */,
 				F88599821A1B42740044C38A /* AFSecurityPolicy.m in Sources */,
 				F8BC52DB1A13810D00E98E8C /* ChooseProjectViewController.m in Sources */,
@@ -705,6 +740,20 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		F8211E6A1A40329C00B35552 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F8211E6B1A40329C00B35552 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		F83AD05A1A08FD9000519D0C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -788,9 +837,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HouseOfMeetingElephants/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -801,9 +852,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HouseOfMeetingElephants/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -844,6 +897,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F8211E6C1A40329C00B35552 /* Build configuration list for PBXAggregateTarget "OCLint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F8211E6A1A40329C00B35552 /* Debug */,
+				F8211E6B1A40329C00B35552 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F83AD0341A08FD9000519D0C /* Build configuration list for PBXProject "HouseOfMeetingElephants" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

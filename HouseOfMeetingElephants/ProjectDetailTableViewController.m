@@ -16,12 +16,14 @@
 
 @implementation ProjectDetailTableViewController
 
-@synthesize colorDisplayer, color, detailProject, projectNameTextField;
+@synthesize colorDisplayer, colorForProject, projectNameTextField;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self populateInterfaceWithProject:self.detailProject];
 }
+
+#pragma mark - Population methods
 
 -(void)populateInterfaceWithProject:(Project *)project {
     self.colorDisplayer.backgroundColor = self.detailProject.color;
@@ -31,7 +33,7 @@
 
 -(IBAction)chooseColor:(id)sender{
     FCColorPickerViewController *colorPicker = [FCColorPickerViewController colorPicker];
-    colorPicker.color = self.color;
+    colorPicker.color = self.colorForProject;
     colorPicker.delegate = self;
     
     [self presentViewController:colorPicker animated:YES completion:nil];
@@ -39,9 +41,12 @@
 
 #pragma mark - FCColorPickerViewControllerDelegate Methods
 
--(void)colorPickerViewController:(FCColorPickerViewController *)colorPicker didSelectColor:(UIColor *)color {
-    self.color = color;
+-(void)colorPickerViewController:(FCColorPickerViewController *)colorPicker
+                  didSelectColor:(UIColor *)color {
+    
+    self.colorForProject = color;
     colorDisplayer.backgroundColor = color;
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -60,14 +65,17 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    [[super tableView:tableView cellForRowAtIndexPath:indexPath] setSelectionStyle:UITableViewCellSelectionStyleNone];
+    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
-    return [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    return cell;
 }
+
+#pragma mark - Navigation bar methods
 
 - (IBAction)updateProject:(id)sender {
     self.detailProject.name = self.projectNameTextField.text;
-    self.detailProject.color = self.color;
+    self.detailProject.color = self.colorForProject;
     
     [self.delegate ProjectDetailTableViewControllerDelegateDidUpdate:self
                                                          withProject:self.detailProject];

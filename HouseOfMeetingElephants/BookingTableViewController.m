@@ -8,12 +8,13 @@
 
 #import "BookingTableViewController.h"
 
-@interface BookingTableViewController ()
+@interface BookingTableViewController () {
+    NSString *cellID;
+}
 
 @property (nonatomic, strong) BookingList *bookingList;
 @property (nonatomic, strong) ProjectList *projectList;
 @property (nonatomic, strong) RoomList *roomList;
-
 @property (nonatomic, strong) Booking *sentBooking;
 
 @end
@@ -22,6 +23,8 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    
     
     self.roomList = [[RoomList alloc] init];
     
@@ -32,11 +35,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    cellID = @"BookingTableViewCell";
+    
     self.bookingList = [[BookingList alloc] init];
     self.projectList = [[ProjectList alloc] init];
     
-    [self.tableView registerNib:[UINib nibWithNibName:@"BookingTableViewCell" bundle:nil] forCellReuseIdentifier:@"BookingTableViewCell"];
+    UINib *nib = [UINib nibWithNibName:cellID bundle:nil];
+    
+    [self.tableView registerNib:nib forCellReuseIdentifier:cellID];
 }
+
+#pragma mark - Reloading data methods
 
 -(void)passRooms:(NSMutableArray *)rooms {
     [self.tableView reloadData];
@@ -49,16 +58,16 @@
     [self.tableView reloadData];
     
     self.bookingList.delegate = self;
-    [self.bookingList fetchDataForBookingsFromRoomList:self.roomList andFromProjectList:self.projectList];
+    [self.bookingList fetchDataForBookingsFromRoomList:self.roomList
+                                    andFromProjectList:self.projectList];
 }
 
 -(void)passData:(NSMutableArray *)data {
     [self.tableView reloadData];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)bookingsRefresh:(id)sender {
+    [self.roomList fetchRooms];
 }
 
 #pragma mark Methods for Create Booking View Controller Delegate
@@ -67,7 +76,8 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)createBookingViewControllerDelegateDidSave:(CreateBookingTableViewController *)vc booking:(Booking *)booking {
+-(void)createBookingViewControllerDelegateDidSave:(CreateBookingTableViewController *)vc
+                                          booking:(Booking *)booking {
     
     [self.bookingList addBooking:booking];
     
@@ -80,7 +90,8 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)BookingDetailViewControllerDelegateDidUpdate:(BookingDetailTableViewController *)vc withBooking:(Booking *)booking {
+-(void)BookingDetailViewControllerDelegateDidUpdate:(BookingDetailTableViewController *)vc
+                                        withBooking:(Booking *)booking {
     
     [self.bookingList updateBooking:booking];
     
@@ -101,9 +112,7 @@
     
     if([segue.identifier isEqualToString:@"bookingDetail"]) {
         
-        UINavigationController *navigationController = segue.destinationViewController;
-     
-        BookingDetailTableViewController *destination = navigationController.viewControllers.firstObject;
+        BookingDetailTableViewController *destination = segue.destinationViewController;
         
         destination.detailBooking = self.sentBooking;
         destination.delegate = self;
@@ -124,7 +133,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    BookingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BookingTableViewCell"];
+    BookingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     
     cell.currentBooking = self.bookingList.bookings[indexPath.row];
     
@@ -139,7 +148,7 @@
     
     self.sentBooking = self.bookingList.bookings[indexPath.row];
     
-    [self performSegueWithIdentifier:@"bookingDetail" sender:nil];
+    [self performSegueWithIdentifier:@"bookingDetail" sender:self];
 }
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {

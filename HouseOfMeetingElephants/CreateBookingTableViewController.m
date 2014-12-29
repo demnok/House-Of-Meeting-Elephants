@@ -27,9 +27,13 @@
     self.booking = [[Booking alloc] init];
 }
 
+#pragma mark - Reload data methods
+
 -(void)passRooms:(NSMutableArray *)rooms {
     [self.tableView reloadData];
 }
+
+#pragma mark - Initial data method
 
 -(void)initialDeclaration {
     NSMutableArray *labelArray = [[NSMutableArray alloc] init];
@@ -92,7 +96,8 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)ChooseRoomViewControllerDelegateDidSave:(ChooseRoomViewController *)vc withRoom:(Room *)room {
+-(void)ChooseRoomViewControllerDelegateDidSave:(ChooseRoomViewController *)vc
+                                      withRoom:(Room *)room {
     
     self.booking.room = room;
     self.roomLabel.text = room.name;
@@ -106,7 +111,8 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)ChooseProjectViewControllerDelegateDidSave:(ChooseProjectViewController *)vc withProject:(Project *)project {
+-(void)ChooseProjectViewControllerDelegateDidSave:(ChooseProjectViewController *)vc
+                                      withProject:(Project *)project {
     
     self.booking.project = project;
     self.assignedProjectLabel.text = project.name;
@@ -121,7 +127,8 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)ChooseStartPointViewControllerDelegateDidSave:(ChooseStartPointViewController *)vc withDate:(NSDate *)date {
+-(void)ChooseStartPointViewControllerDelegateDidSave:(ChooseStartPointViewController *)vc
+                                            withDate:(NSDate *)date {
     
     self.booking.startDate = date;
     self.startPointLabel.text = [self convertDateToString:date];
@@ -135,7 +142,8 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)ChooseEndPointViewControllerDelegateDidSave:(ChooseEndPointViewController *)vc withDate:(NSDate *)date {
+-(void)ChooseEndPointViewControllerDelegateDidSave:(ChooseEndPointViewController *)vc
+                                          withDate:(NSDate *)date {
     
     self.booking.endDate = date;
     self.endPointLabel.text = [self convertDateToString:date];
@@ -153,6 +161,8 @@
     return formattedDate;
 }
 
+#pragma mark - Navigation bar methods
+
 - (IBAction)saveBooking:(id)sender {
     self.booking.name = self.bookingNameTextField.text;
     self.booking.recurrent = self.isRecurrent.isOn;
@@ -169,7 +179,10 @@
     
     if (!self.booking.endDate || !self.booking.startDate) {
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Date not found" message:@"Please choose both dates before proceeding"  delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        NSString* msg  = @"Please choose both dates before proceeding";
+        NSString* title = @"Date not found";
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title  message:msg  delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         
         [alert show];
         
@@ -195,9 +208,11 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    [[super tableView:tableView cellForRowAtIndexPath:indexPath] setSelectionStyle:UITableViewCellSelectionStyleNone];
     
-    return [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    
+    return cell;
 }
 
 @end

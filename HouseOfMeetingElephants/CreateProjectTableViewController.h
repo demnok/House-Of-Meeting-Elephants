@@ -16,7 +16,7 @@
 - (IBAction)cancelProject:(id)sender;
 - (IBAction)saveProject:(id)sender;
 
-@property (strong, nonatomic) UIColor *color;
+@property (strong, nonatomic) UIColor *colorForProject;
 @property (strong, nonatomic) IBOutlet UIView *colorDisplayer;
 
 @property (weak, nonatomic) IBOutlet UITextField *projectNameTextField;

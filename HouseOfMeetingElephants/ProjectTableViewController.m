@@ -9,7 +9,9 @@
 #import "ProjectTableViewController.h"
 #import "Project.h"
 
-@interface ProjectTableViewController ()
+@interface ProjectTableViewController () {
+    NSString *cellID;
+}
 
 @property (nonatomic, strong) Project *project;
 @property (nonatomic, strong) Project *sentProject;
@@ -31,12 +33,25 @@
     [super viewDidLoad];
     
     self.project = [[Project alloc] init];
-    [self.tableView registerNib:[UINib nibWithNibName:@"ProjectTableViewCell" bundle:nil] forCellReuseIdentifier:@"ProjectTableViewCell"];
+    
+    cellID = @"ProjectTableViewCell";
+    
+    UINib *nib = [UINib nibWithNibName:cellID bundle:nil];
+    
+    [self.tableView registerNib:nib forCellReuseIdentifier:cellID];
 }
+
+#pragma mark - Reloading data methods
 
 -(void)passProjects:(NSMutableArray *)projects {
     [self.tableView reloadData];
 }
+
+- (IBAction)projectsRefresh:(id)sender {
+    [self.projectList fetchProjects];
+}
+
+#pragma mark - Prepare for segue
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
@@ -50,16 +65,17 @@
     }
     
     if([segue.identifier isEqualToString:@"projectDetail"]) {
-        UINavigationController *navigationController = segue.destinationViewController;
         
-        ProjectDetailTableViewController *destination = navigationController.viewControllers.firstObject;
+        ProjectDetailTableViewController *destination = segue.destinationViewController;
         
         destination.detailProject = self.sentProject;
-        destination.color = self.sentProject.color;
+        destination.colorForProject = self.sentProject.color;
         destination.delegate = self;
     }
 
 }
+
+#pragma mark - Methods for Create Project Table View Controller Delegate
 
 -(void)CreateProjectTableViewControllerDelegateDidCancel:(CreateProjectTableViewController *)vc {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -97,7 +113,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    ProjectTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProjectTableViewCell"];
+    ProjectTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     

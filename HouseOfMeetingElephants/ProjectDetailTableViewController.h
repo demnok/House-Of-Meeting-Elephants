@@ -18,7 +18,7 @@
 
 - (IBAction)chooseColor:(id)sender;
 
-@property (strong, nonatomic) UIColor *color;
+@property (strong, nonatomic) UIColor *colorForProject;
 @property (strong, nonatomic) Project *detailProject;
 
 @property (weak, nonatomic) IBOutlet UIView *colorDisplayer;

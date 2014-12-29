@@ -15,24 +15,41 @@
 
 @implementation RoomList
 
+#pragma mark - Host setter method
+
+-(NSString *)host{
+    NSString *host = [[NSString alloc] init];
+    host = @"http://192.168.0.199:8001/room/";
+    
+    return host;
+}
+
+#pragma mark - Server communication related methods
+
 -(void)fetchRooms {
     
-    NSMutableArray *roomsToPass = [NSMutableArray array];
+    __block NSMutableArray *roomsToPass = [NSMutableArray array];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-    [manager GET:@"http://localhost:8001/room" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:[self host] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        for (NSDictionary *individualObject in responseObject) {
+        NSMutableArray *rooms = (NSMutableArray *)responseObject;
+        
+        [rooms enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            
+            NSDictionary *object = (NSDictionary *)obj;
             
             Room *roomToAdd = [[Room alloc] init];
             
-            roomToAdd.name = individualObject[@"name"];
-            roomToAdd.roomID = [NSString stringWithFormat:@"%@",individualObject[@"id"]];
+            roomToAdd.name = [NSString stringWithFormat:@"%@", object[@"name"]];
+            
+            NSString *roomID = [NSString stringWithFormat:@"%@", object[@"id"]];
+            roomToAdd.roomID = roomID;
+            
             [roomsToPass addObject:roomToAdd];
-            NSLog(@"%@",roomToAdd.name);
-        }
-        
+        }];
+                
         self.rooms = roomsToPass;
         [self.delegate passRooms:roomsToPass];
         
@@ -45,7 +62,7 @@
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-    NSString *deletePath = [[NSString alloc] initWithFormat:@"%@%@",@"http://localhost:8001/room/",room.roomID];
+    NSString *deletePath = [[NSString alloc] initWithFormat:@"%@%@",[self host],room.roomID];
     
     [manager DELETE:deletePath parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
@@ -65,7 +82,8 @@
     
     NSDictionary *roomToSend = @{@"name" : room.name};
     
-    [manager POST:@"http://localhost:8001/room" parameters:roomToSend success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:[self host] parameters:roomToSend success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
         room.roomID = [NSString stringWithFormat:@"%@",(NSDictionary *)responseObject[@"id"]];
         [self.rooms addObject:room];
         
@@ -82,7 +100,7 @@
     
     NSDictionary *roomToSend = @{@"name" : room.name};
     
-    [manager PUT:[NSString stringWithFormat:@"%@%@",@"http://localhost:8001/room/",room.roomID]
+    [manager PUT:[NSString stringWithFormat:@"%@%@",[self host],room.roomID]
       parameters:roomToSend
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              

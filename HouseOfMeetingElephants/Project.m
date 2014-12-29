@@ -2,7 +2,7 @@
 //  Project.m
 //  HouseOfMeetingElephants
 //
-//  Created by Stolniceanu Stefan on 04/11/14.
+//  Created by Stolniceanu Stefan on 22/12/14.
 //  Copyright (c) 2014 Stefan Stolniceanu. All rights reserved.
 //
 
@@ -10,9 +10,9 @@
 
 @implementation Project
 
-- (instancetype)initWithName:(NSString *)name andColor:(UIColor *)color {
+-(instancetype)initWithName:(NSString *)name andColor:(UIColor *)color {
     self = [super init];
-    if(self) {
+    if (self) {
         self.name = name;
         self.color = color;
     }

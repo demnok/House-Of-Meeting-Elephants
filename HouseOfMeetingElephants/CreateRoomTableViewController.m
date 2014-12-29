@@ -26,9 +26,7 @@
     self.room = [[Room alloc] init];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
+#pragma mark - Reload data methods
 
 -(void)passRooms:(NSMutableArray *)rooms {
     [self.tableView reloadData];
@@ -45,16 +43,20 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    [[super tableView:tableView cellForRowAtIndexPath:indexPath] setSelectionStyle:UITableViewCellSelectionStyleNone];
+    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     return [super tableView:tableView cellForRowAtIndexPath:indexPath];
 }
 
- #pragma mark - Navigation
+ #pragma mark - Prepare for segue
 
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
  
  }
+
+#pragma mark - Navigation bar methods
 
 - (IBAction)cancelRoom:(id)sender {
     

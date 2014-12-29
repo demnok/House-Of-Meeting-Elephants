@@ -23,6 +23,8 @@
     [self populateInterfaceWithBooking:self.detailBooking];
 }
 
+#pragma mark - Population methods
+
 -(void)populateInterfaceWithBooking:(Booking *)booking {
     
     self.bookingNameTextField.text = booking.name;
@@ -89,7 +91,8 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)ChooseRoomViewControllerDelegateDidSave:(ChooseRoomViewController *)vc withRoom:(Room *)room {
+-(void)ChooseRoomViewControllerDelegateDidSave:(ChooseRoomViewController *)vc
+                                      withRoom:(Room *)room {
     
     self.detailBooking.room = room;
     self.roomLabel.text = room.name;
@@ -103,7 +106,8 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)ChooseProjectViewControllerDelegateDidSave:(ChooseProjectViewController *)vc withProject:(Project *)project {
+-(void)ChooseProjectViewControllerDelegateDidSave:(ChooseProjectViewController *)vc
+                                      withProject:(Project *)project {
     
     self.detailBooking.project = project;
     self.assignedProjectLabel.text = project.name;
@@ -118,7 +122,8 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)ChooseStartPointViewControllerDelegateDidSave:(ChooseStartPointViewController *)vc withDate:(NSDate *)date {
+-(void)ChooseStartPointViewControllerDelegateDidSave:(ChooseStartPointViewController *)vc
+                                            withDate:(NSDate *)date {
     
     self.detailBooking.startDate = date;
     self.startPointLabel.text = [self convertDateToString:date];
@@ -132,7 +137,8 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)ChooseEndPointViewControllerDelegateDidSave:(ChooseEndPointViewController *)vc withDate:(NSDate *)date {
+-(void)ChooseEndPointViewControllerDelegateDidSave:(ChooseEndPointViewController *)vc
+                                          withDate:(NSDate *)date {
     
     self.detailBooking.endDate = date;
     self.endPointLabel.text = [self convertDateToString:date];
@@ -161,10 +167,14 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    [[super tableView:tableView cellForRowAtIndexPath:indexPath] setSelectionStyle:UITableViewCellSelectionStyleNone];
     
-    return [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    
+    return cell;
 }
+
+#pragma mark - Navigation bar methods
 
 - (IBAction)goBack:(id)sender {
     [self.delegate BookingDetailViewControllerDelegateDidGoBack:self];

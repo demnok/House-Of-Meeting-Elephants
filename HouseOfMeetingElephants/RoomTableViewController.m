@@ -8,7 +8,9 @@
 
 #import "RoomTableViewController.h"
 
-@interface RoomTableViewController ()
+@interface RoomTableViewController () {
+    NSString *cellID;
+}
 
 @property (nonatomic, strong) Room *sentRoom;
 @property (nonatomic, strong) RoomList *roomList;
@@ -28,7 +30,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    
-    [self.tableView registerNib:[UINib nibWithNibName:@"RoomTableViewCell" bundle:nil] forCellReuseIdentifier:@"RoomTableViewCell"];
+    cellID = @"RoomTableViewCell";
+    
+    UINib *nib = [UINib nibWithNibName:cellID bundle:nil];
+    
+    [self.tableView registerNib:nib forCellReuseIdentifier:cellID];
+}
+
+#pragma mark - Reloading data methods
+
+- (IBAction)roomsRefresh:(id)sender {
+    [self.roomList fetchRooms];
 }
 
 -(void)passRooms:(NSMutableArray *)rooms {
@@ -47,7 +59,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    RoomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RoomTableViewCell"];
+    RoomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.currentRoom = self.roomList.rooms[indexPath.row];
@@ -56,7 +68,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.sentRoom = self.roomList.rooms[indexPath.row];
+    self.sentRoom = [self.roomList.rooms objectAtIndex:indexPath.row];
     
     [self performSegueWithIdentifier:@"roomDetail" sender:nil];
 }
@@ -118,14 +130,11 @@
     
     if([segue.identifier isEqualToString:@"roomDetail"]) {
         
-        UINavigationController *navigationController = segue.destinationViewController;
-        
-        RoomDetailTableViewController *destination = navigationController.viewControllers.firstObject;
-        
+        RoomDetailTableViewController *destination = segue.destinationViewController;
+
         destination.detailRoom = self.sentRoom;
         destination.delegate = self;
     }
-    
 }
 
 @end

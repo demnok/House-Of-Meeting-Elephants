@@ -14,5 +14,6 @@
 
 @interface ProjectTableViewController : UITableViewController <CreateProjectViewControllerDelegate, PassProjectsProtocol, ProjectDetailTableViewControllerDelegate>
 
+- (IBAction)projectsRefresh:(id)sender;
 
 @end

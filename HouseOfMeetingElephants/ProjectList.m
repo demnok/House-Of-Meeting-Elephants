@@ -11,25 +11,48 @@
 
 @implementation ProjectList
 
+#pragma mark - Host setting method
+
+-(NSString *)host{
+    NSString *host = [[NSString alloc] init];
+    host = @"http://192.168.0.199:8001/project/";
+    
+    return host;
+}
+
+#pragma mark - Server communication related methods
+
 -(void)fetchProjects {
     
-    NSMutableArray *projectsToPass = [NSMutableArray array];
+    __block NSMutableArray *projectsToPass = [NSMutableArray array];
+    __block NSString *name;
+    __block UIColor *color;
+    __block NSString *projectID;
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-    [manager GET:@"http://localhost:8001/project" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:[self host] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        for (NSDictionary *individualObject in responseObject) {
-            
-            Project *projectToAdd = [[Project alloc] init];
-            
-            projectToAdd.name = individualObject[@"name"];
-            projectToAdd.color = [self transformToColorFromHexString:individualObject[@"color"]];
-            projectToAdd.projectID = [NSString stringWithFormat:@"%@",individualObject[@"id"]];
-            
-            [projectsToPass addObject:projectToAdd];
-        }
+        NSMutableArray *projects = (NSMutableArray *)responseObject;
         
+        [projects enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            
+            NSDictionary *object = (NSDictionary *)obj;
+            
+            name = object[@"name"];
+            color = [self transformToColorFromHexString:object[@"color"]];
+            projectID = object[@"id"];
+            
+            Project *addedProject = [[Project alloc] init];
+            
+            addedProject.name = name;
+            addedProject.color = color;
+            
+            addedProject.projectID = projectID;
+            
+            [projectsToPass addObject:addedProject];
+        }];
+    
         self.projects = projectsToPass;
         [self.delegate passProjects:projectsToPass];
         
@@ -41,10 +64,13 @@
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-    NSDictionary *projectToSend = @{@"name": project.name,
-                                    @"color": [self transformToStringFromColor:project.color]};
+    NSString *projectColor;
+    projectColor = [self transformToStringFromColor:project.color];
     
-    [manager POST:@"http://localhost:8001/project" parameters:projectToSend success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSDictionary *projectToSend = @{@"name": project.name,
+                                    @"color": projectColor};
+    
+    [manager POST:[self host] parameters:projectToSend success:^(AFHTTPRequestOperation *operation, id responseObject) {
        
         project.projectID = responseObject[@"id"];
         [self.projects addObject:project];
@@ -60,10 +86,7 @@
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-    NSString *targetServer = @"http://localhost:8001/project/";
-    NSString *projectToBeRemovedWithID = project.projectID;
-    
-    [manager DELETE:[NSString stringWithFormat:@"%@%@",targetServer,projectToBeRemovedWithID] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager DELETE:[NSString stringWithFormat:@"%@%@", [self host], project.projectID] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         [self.projects removeObject:project];
         
@@ -81,7 +104,7 @@
     NSDictionary *projectToSend = @{@"name": project.name,
                                     @"color":[self transformToStringFromColor:project.color]};
 
-    [manager PUT:[NSString stringWithFormat:@"%@%@",@"http://localhost:8001/project/", project.projectID] parameters:projectToSend success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager PUT:[NSString stringWithFormat:@"%@%@", [self host], project.projectID] parameters:projectToSend success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         [self.delegate passProjects:self.projects];
     

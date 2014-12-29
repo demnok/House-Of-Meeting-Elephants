@@ -16,20 +16,19 @@
 
 @implementation CreateProjectTableViewController
 
-@synthesize colorDisplayer, color;
+@synthesize colorDisplayer, colorForProject;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.project = [[Project alloc] init];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
+#pragma mark - Population methods
 
 -(IBAction)chooseColor:(id)sender{
     FCColorPickerViewController *colorPicker = [FCColorPickerViewController colorPicker];
-    colorPicker.color = self.color;
+    colorPicker.color = self.colorForProject;
     colorPicker.delegate = self;
     
     [self presentViewController:colorPicker animated:YES completion:nil];
@@ -38,8 +37,9 @@
 #pragma mark - FCColorPickerViewControllerDelegate Methods
 
 -(void)colorPickerViewController:(FCColorPickerViewController *)colorPicker didSelectColor:(UIColor *)color {
-    self.color = color;
+    self.colorForProject = color;
     colorDisplayer.backgroundColor = color;
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -58,10 +58,13 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    [[super tableView:tableView cellForRowAtIndexPath:indexPath] setSelectionStyle:UITableViewCellSelectionStyleNone];
+    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     return [super tableView:tableView cellForRowAtIndexPath:indexPath];
 }
+
+#pragma mark - Navigation bar methods
 
 - (IBAction)cancelProject:(id)sender {
     [self.delegate CreateProjectTableViewControllerDelegateDidCancel:self];
@@ -69,7 +72,7 @@
 
 - (IBAction)saveProject:(id)sender {
     
-    self.project.color = self.color;
+    self.project.color = self.colorForProject;
     self.project.name = self.projectNameTextField.text;
     
     [self.delegate CreateProjectTableViewControllerDelegateDidSave:self project:self.project];

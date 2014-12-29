@@ -21,6 +21,8 @@
     [self presentViewController:self animated:YES completion:nil];
 }
 
+#pragma mark - FCColorPicker methods
+
 -(void)colorPickerViewController:(FCColorPickerViewController *)colorPicker didSelectColor:(UIColor *)color {
     self.color = color;
     [self dismissViewControllerAnimated:YES completion:nil];

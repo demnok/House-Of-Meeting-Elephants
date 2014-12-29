@@ -55,7 +55,8 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)CreateProjectTableViewControllerDelegateDidSave:(CreateProjectTableViewController *)vc project:(Project *)project {
+-(void)CreateProjectTableViewControllerDelegateDidSave:(CreateProjectTableViewController *)vc
+                                               project:(Project *)project {
     [self.projectList addProject:project];
     
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -76,7 +77,10 @@
 }
 
 - (IBAction)saveChoiceOfProject:(id)sender {
-    [self.delegate ChooseProjectViewControllerDelegateDidSave:self withProject:[self.projectPickerSource objectAtIndex:[self.projectPicker selectedRowInComponent:0]]];
+    
+    Project *project = [self.projectPickerSource objectAtIndex:[self.projectPicker selectedRowInComponent:0]];
+    
+    [self.delegate ChooseProjectViewControllerDelegateDidSave:self withProject:project];
 }
 
 - (IBAction)cancelChoiceOfProject:(id)sender {

@@ -2,7 +2,7 @@
 //  Project.h
 //  HouseOfMeetingElephants
 //
-//  Created by Stolniceanu Stefan on 04/11/14.
+//  Created by Stolniceanu Stefan on 22/12/14.
 //  Copyright (c) 2014 Stefan Stolniceanu. All rights reserved.
 //
 
@@ -15,6 +15,6 @@
 @property (nonatomic, strong) UIColor *color;
 @property (nonatomic, strong) NSString *projectID;
 
-- (instancetype)initWithName:(NSString *)name andColor:(UIColor *)color;
+- (instancetype)initWithName:(NSString *)project andColor:(UIColor *)color;
 
 @end

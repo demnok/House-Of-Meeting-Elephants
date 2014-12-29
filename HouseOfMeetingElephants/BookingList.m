@@ -11,38 +11,66 @@
 
 @implementation BookingList
 
--(void)fetchDataForBookingsFromRoomList:(RoomList *)roomList andFromProjectList:(ProjectList *)projectList{
-    NSMutableArray *bookingsToPass = [NSMutableArray array];
+#pragma mark - Host setting method
+
+-(NSString *)host{
+    NSString *host = [[NSString alloc] init];
+    host = @"http://192.168.0.199:8001/reservations/";
+    
+    return host;
+}
+
+#pragma mark - Server communication related methods
+
+-(void)fetchDataForBookingsFromRoomList:(RoomList *)roomList
+                     andFromProjectList:(ProjectList *)projectList{
+    
+    __block NSMutableArray *bookingsToPass = [NSMutableArray array];
+    __block NSString *name;
+    __block NSDate *startDate;
+    __block NSDate *endDate;
+    __block Room *room;
+    __block Project *project;
+    __block BOOL recurrency;
+    __block NSString *roomID;
+    __block NSString *projectID;
+    
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-    [manager GET:@"http://localhost:8001/reservations" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:[self host] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
     
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         dateFormatter.dateFormat = @"yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'zzz'Z'";
         
-        for(NSDictionary *individualObject in responseObject[@"reservations"]) {
+        NSMutableArray *bookings = (NSMutableArray *)responseObject[@"reservations"];
+    
+        [bookings enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             
-            NSDate *startDate = [[NSDate alloc] init];
-            NSDate *endDate = [[NSDate alloc] init];
+            NSDictionary *object = (NSDictionary *)obj;
             
-            startDate = [dateFormatter dateFromString:individualObject[@"startDate"]];
-            endDate = [dateFormatter dateFromString:individualObject[@"endDate"]];
+            roomID = [NSString stringWithFormat:@"%@",object[@"meetingRoom"]];
+            projectID = [NSString stringWithFormat:@"%@",object[@"project"]];
             
-            Booking *bookingToAdd = [[Booking alloc] initWithBookingName:individualObject[@"meetingName"]
-                                                             bookingRoom:[self searchForRoomWithID:individualObject[@"meetingRoom"] inRoomList:roomList]
+            name = object[@"meetingName"];
+            startDate = [dateFormatter dateFromString:object[@"startDate"]];
+            endDate = [dateFormatter dateFromString:object[@"endDate"]];
+            room = [self searchForRoomWithID:roomID inRoomList:roomList];
+            project = [self searchForProjectWithID:projectID inProjectList:projectList];
+            recurrency = [object[@"isRecurrent"] boolValue];
+            
+            Booking *addedBooking = [[Booking alloc] initWithBookingName:name
+                                                             bookingRoom:room
                                                         bookingStartDate:startDate
                                                           bookingEndDate:endDate
-                                                         bookedByProject:[self searchForProjectWithID:individualObject[@"project"] inProjectList:projectList]
-                                                              recurrency:[individualObject[@"isRecurrent"] boolValue]];
+                                                         bookedByProject:project
+                                                              recurrency:recurrency];
             
-            bookingToAdd.bookingID = individualObject[@"_id"];
+            addedBooking.bookingID = object[@"_id"];
             
-            [bookingsToPass addObject:bookingToAdd];
-            }
-        
-        
-        
+            [bookingsToPass addObject:addedBooking];
+        }];
+                
         self.bookings = bookingsToPass;
         [self.delegate passData:bookingsToPass];
         
@@ -50,35 +78,7 @@
     }];
 }
 
--(Room *)searchForRoomWithID:(NSString *)roomID
-                  inRoomList:(RoomList *)roomList {
-    
-    for(Room *room in roomList.rooms) {
-        if([room.roomID isEqualToString:roomID]) {
-            return room;
-        }
-    }
-    
-    Room *errorRoom = [[Room alloc] initWithRoomName:@"no room"];
-    errorRoom.roomID =@"No room";
-    
-    return errorRoom;
-}
 
--(Project *)searchForProjectWithID:(NSString *)projectID
-                     inProjectList:(ProjectList *)projectList{
-    
-    for (Project *project in projectList.projects) {
-        if ([project.projectID isEqualToString:projectID]) {
-            return project;
-        }
-    }
-    
-    Project *errorProject = [[Project alloc] initWithName:@"no project" andColor:[UIColor redColor]];
-    errorProject.projectID = @"No project";
-    
-    return errorProject;
-}
 
 -(void)addBooking:(Booking *)booking {
     
@@ -91,9 +91,11 @@
                                     @"project": booking.project.projectID,
                                     @"isRecurrent": [NSString stringWithFormat:@"%@",(booking.isRecurrent ? @"true" : @"false")]};
     
-    [manager POST:@"http://localhost:8001/reservations" parameters:bookingToSend success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:[self host] parameters:bookingToSend success:^(AFHTTPRequestOperation *operation, id responseObject) {
        
-        booking.bookingID = [NSString stringWithFormat:@"%@", (NSDictionary *)responseObject[@"reservation"][@"_id"]];
+        NSDictionary *response = (NSDictionary *)responseObject[@"reservation"][@"_id"];
+        
+        booking.bookingID = [NSString stringWithFormat:@"%@", response ];
         
         [self.bookings addObject:booking];
         
@@ -115,7 +117,8 @@
                                    @"project": booking.project.projectID,
                                    @"isRecurrent": [NSString stringWithFormat:@"%@",(booking.isRecurrent ? @"true" : @"false")]};
     
-    [manager PUT: [NSString stringWithFormat:@"%@%@", @"http://localhost:8001/reservations/",booking.bookingID] parameters:bookingToSend success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager PUT: [NSString stringWithFormat:@"%@%@", [self host],booking.bookingID] parameters:bookingToSend success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
         [self.delegate passData:self.bookings];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
     }];
@@ -125,10 +128,7 @@
 
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-    NSString *targetServer = @"http://localhost:8001/reservations/";
-    NSString *bookingToBeRemovedWithID = booking.bookingID;
-    
-    NSString *deletePath = [NSString stringWithFormat:@"%@%@", targetServer, bookingToBeRemovedWithID];
+    NSString *deletePath = [NSString stringWithFormat:@"%@%@", [self host], booking.bookingID];
     
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
@@ -142,6 +142,49 @@
         NSLog(@"%@",error);
     }];
     
+}
+
+#pragma mark - Searching within lists methods
+
+-(Room *)searchForRoomWithID:(NSString *)roomID
+                  inRoomList:(RoomList *)roomList {
+    
+    __block Room *sentRoom = [[Room alloc] initWithRoomName:@"no room"];
+    sentRoom.roomID =@"No room";
+    
+    [roomList.rooms enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        Room *room = (Room *)obj;
+        
+        if([room.roomID isEqualToString:roomID]) {
+            sentRoom = room;
+            
+            (*stop) = YES;
+        }
+    }];
+    
+    return sentRoom;
+}
+
+-(Project *)searchForProjectWithID:(NSString *)projectID
+                     inProjectList:(ProjectList *)projectList{
+    
+    __block Project *sentProject = [[Project alloc] initWithName:@"no project"
+                                                        andColor:[UIColor redColor]];
+    sentProject.projectID = @"No project";
+    
+    [projectList.projects enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        Project *project = (Project *)obj;
+        
+        NSString *string = [NSString stringWithFormat:@"%@", project.projectID];
+        
+        if([string isEqualToString:projectID]) {
+            sentProject = project;
+            
+            (*stop) = YES;
+        }
+    }];
+    
+    return sentProject;
 }
 
 @end

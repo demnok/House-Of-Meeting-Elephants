@@ -14,5 +14,6 @@
 
 @interface BookingTableViewController : UITableViewController <CreateBookingViewControllerDelegate, BookingDetailViewControllerDelegate, PassBookingsDelegate, PassRoomsProtocol, PassProjectsProtocol>
 
+- (IBAction)bookingsRefresh:(id)sender;
 
 @end

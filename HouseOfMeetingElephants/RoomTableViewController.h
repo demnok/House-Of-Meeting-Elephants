@@ -14,5 +14,6 @@
 
 @interface RoomTableViewController : UITableViewController <CreateRoomViewControllerDelegate, PassRoomsProtocol, RoomDetailTableViewControllerDelegate>
 
+- (IBAction)roomsRefresh:(id)sender;
 
 @end

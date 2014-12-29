@@ -18,9 +18,32 @@
     self.roomNameTextField.text = self.detailRoom.name;
 }
 
+#pragma mark - Population methods
+
 -(void)populateInterfaceWithRoom:(Room *)room {
     self.roomNameTextField.text = room.name;
 }
+
+
+#pragma mark - Table view data source
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [super tableView:tableView numberOfRowsInSection:section];
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    
+    return cell;
+}
+
+#pragma mark - Navigation bar methods
 
 - (IBAction)updateRoom:(id)sender {
     self.detailRoom.name = self.roomNameTextField.text;
@@ -31,12 +54,6 @@
 
 - (IBAction)goBack:(id)sender {
     [self.delegate RoomDetailTableViewControllerDelegateDidGoBack:self];
-}
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    [[super tableView:tableView cellForRowAtIndexPath:indexPath] setSelectionStyle:UITableViewCellSelectionStyleNone];
-    
-    return [super tableView:tableView cellForRowAtIndexPath:indexPath];
 }
 
 @end
