@@ -45,6 +45,8 @@
 		F83AD0C01A09220900519D0C /* ProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F83AD0BE1A09220900519D0C /* ProjectTableViewCell.xib */; };
 		F87107201A1391A300A10FB8 /* ChooseStartPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F871071F1A1391A300A10FB8 /* ChooseStartPointViewController.m */; };
 		F87107231A1391B300A10FB8 /* ChooseEndPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F87107221A1391B300A10FB8 /* ChooseEndPointViewController.m */; };
+		F883392D1A51FB5B00735604 /* RoomListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F883392C1A51FB5B00735604 /* RoomListTests.m */; };
+		F883392E1A51FB5B00735604 /* RoomListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F883392C1A51FB5B00735604 /* RoomListTests.m */; };
 		F885997E1A1B42740044C38A /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F885996C1A1B42740044C38A /* AFHTTPRequestOperation.m */; };
 		F885997F1A1B42740044C38A /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F885996E1A1B42740044C38A /* AFHTTPRequestOperationManager.m */; };
 		F88599801A1B42740044C38A /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F88599701A1B42740044C38A /* AFHTTPSessionManager.m */; };
@@ -136,6 +138,7 @@
 		F871071F1A1391A300A10FB8 /* ChooseStartPointViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseStartPointViewController.m; sourceTree = "<group>"; };
 		F87107211A1391B300A10FB8 /* ChooseEndPointViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseEndPointViewController.h; sourceTree = "<group>"; };
 		F87107221A1391B300A10FB8 /* ChooseEndPointViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseEndPointViewController.m; sourceTree = "<group>"; };
+		F883392C1A51FB5B00735604 /* RoomListTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomListTests.m; sourceTree = "<group>"; };
 		F885996B1A1B42740044C38A /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		F885996C1A1B42740044C38A /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		F885996D1A1B42740044C38A /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -306,6 +309,8 @@
 			isa = PBXGroup;
 			children = (
 				F83AD0581A08FD9000519D0C /* HouseOfMeetingElephantsTests.m */,
+				F883392C1A51FB5B00735604 /* RoomListTests.m */,
+				F883392F1A51FB6200735604 /* Entity Lists Tests */,
 				F83AD0561A08FD9000519D0C /* Supporting Files */,
 			);
 			path = HouseOfMeetingElephantsTests;
@@ -363,6 +368,13 @@
 				F83AD0BE1A09220900519D0C /* ProjectTableViewCell.xib */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		F883392F1A51FB6200735604 /* Entity Lists Tests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Entity Lists Tests";
 			sourceTree = "<group>";
 		};
 		F885996A1A1B42740044C38A /* AFNetworking */ = {
@@ -697,6 +709,7 @@
 				F88E97831A10D77A00BA93F3 /* FCColorPickerViewController.m in Sources */,
 				F83AD03F1A08FD9000519D0C /* main.m in Sources */,
 				F88599821A1B42740044C38A /* AFSecurityPolicy.m in Sources */,
+				F883392D1A51FB5B00735604 /* RoomListTests.m in Sources */,
 				F8BC52DB1A13810D00E98E8C /* ChooseProjectViewController.m in Sources */,
 				F8C13D621A35C89800F3BC0B /* RoomDetailTableViewController.m in Sources */,
 			);
@@ -706,6 +719,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F883392E1A51FB5B00735604 /* RoomListTests.m in Sources */,
 				F83AD0591A08FD9000519D0C /* HouseOfMeetingElephantsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -757,7 +771,7 @@
 		F83AD05A1A08FD9000519D0C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -774,6 +788,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/HouseOfMeetingElephants/**";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -798,7 +813,7 @@
 		F83AD05B1A08FD9000519D0C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -816,6 +831,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/HouseOfMeetingElephants/**";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -836,9 +852,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"/Applications/XCode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks\n/Applications/Xcode.app/Contents/OtherFrameworks",
+				);
 				INFOPLIST_FILE = HouseOfMeetingElephants/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -851,9 +871,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"/Applications/XCode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks\n/Applications/Xcode.app/Contents/OtherFrameworks",
+				);
 				INFOPLIST_FILE = HouseOfMeetingElephants/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -864,13 +888,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Library/Frameworks;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"\"$(OBJROOT)/UninstallerProducts/include\"",
+					"\"$(TARGET_BUILD_DIR)/usr/local/lib/include\"",
 				);
 				INFOPLIST_FILE = HouseOfMeetingElephantsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -883,9 +908,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
+				FRAMEWORK_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Library/Frameworks;
+				HEADER_SEARCH_PATHS = (
+					"\"$(OBJROOT)/UninstallerProducts/include\"",
+					"\"$(TARGET_BUILD_DIR)/usr/local/lib/include\"",
 				);
 				INFOPLIST_FILE = HouseOfMeetingElephantsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
