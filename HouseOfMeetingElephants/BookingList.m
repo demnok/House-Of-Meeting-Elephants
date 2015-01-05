@@ -14,6 +14,7 @@
     NSString *host;
     NSString *pathByID;
     AFHTTPRequestOperationManager *manager;
+    NSDateFormatter *dateFormatter;
 }
 
 #pragma mark - Initialisation
@@ -23,6 +24,7 @@
     if (self = [super init]) {
         [self initHost];
         [self initManager];
+        [self initDateFormatter];
     }
     
     return self;
@@ -37,9 +39,16 @@
     manager = [AFHTTPRequestOperationManager manager];
 }
 
-#pragma mark - Helper methods
+- (void)initDateFormatter {
+    dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'zzz'Z'";
+}
 
-- (NSString *)merge:(NSString *)firstString with:(NSString *)secondString {
+#pragma mark - Generic helper methods 
+//TODO: De implementat cu categorii
+
+- (NSString *)merge:(NSString *)firstString
+               with:(NSString *)secondString {
     
     NSMutableString *result = [firstString mutableCopy];
     [result appendString:[secondString mutableCopy]];
@@ -47,12 +56,22 @@
     return [result copy];
 }
 
-- (NSString *)toString:(id)object {
+- (NSString *)stringFrom:(id)object {
    
     NSDictionary *obj = (NSDictionary *)object;
     NSString *str = [NSString stringWithFormat:@"%@", obj];
     
     return str;
+}
+
+#pragma mark - Class helper method
+
+- (NSDate *)dateFrom:(id)object {
+    
+    NSString *obj = [[NSString alloc] init];
+    obj = [NSString stringWithFormat:@"%@", object];
+    
+    return [dateFormatter dateFromString:obj];
 }
 
 #pragma mark - Server communication related methods
@@ -67,8 +86,7 @@
       parameters:nil
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
     
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        dateFormatter.dateFormat = @"yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'zzz'Z'";
+        
         
         NSMutableArray *bookings = (NSMutableArray *)responseObject[@"reservations"];
     
@@ -79,13 +97,13 @@
             NSString *roomID = [NSString alloc];
             NSString *projectID = [NSString alloc];
             
-            roomID = [self toString:object[@"meetingRoom"]];
-            projectID = [self toString:object[@"project"]];
+            roomID = [self stringFrom:object[@"meetingRoom"]];
+            projectID = [self stringFrom:object[@"project"]];
 
-            bk.name = [self toString:object[@"meetingName"]];
+            bk.name = [self stringFrom:object[@"meetingName"]];
 
-            bk.startDate = [dateFormatter dateFromString:object[@"startDate"]];
-            bk.endDate = [dateFormatter dateFromString:object[@"endDate"]];
+            bk.startDate = [self dateFrom:object[@"startDate"]];
+            bk.endDate = [self dateFrom:object[@"endDate"]];
             
             bk.room = [self searchForRoomWithID:roomID inRoomList:roomList];
             bk.room.roomID = roomID;
@@ -120,7 +138,7 @@
     
     [manager POST:host parameters:bookingToSend success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        booking.bookingID = [self toString:responseObject[@"reservation"][@"_id"]];
+        booking.bookingID = [self stringFrom:responseObject[@"reservation"][@"_id"]];
         
         [self.bookings addObject:booking];
         
@@ -170,7 +188,7 @@
     
 }
 
-#pragma mark - Searching within lists methods
+#pragma mark - Searching within list methods
 
 -(Room *)searchForRoomWithID:(NSString *)roomID
                   inRoomList:(RoomList *)roomList {
@@ -201,7 +219,7 @@
     [projectList.projects enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         Project *project = (Project *)obj;
         
-        NSString *string = [self toString:project.projectID];
+        NSString *string = [self stringFrom:project.projectID];
         
         if([string isEqualToString:projectID]) {
             sentProject = project;

@@ -39,7 +39,7 @@
 
 #pragma mark - Helper methods
 
-- (NSString *)toString:(id)object {
+- (NSString *)stringFrom:(id)object {
     
     NSDictionary *obj = (NSDictionary *)object;
     NSString *str = [NSString stringWithFormat:@"%@", obj];
@@ -73,11 +73,11 @@
             
             Room *roomToAdd = [[Room alloc] init];
             
-            roomToAdd.name = [self toString:object[@"name"]];
+            roomToAdd.name = [self stringFrom:object[@"name"]];
             
             NSString *roomID = [NSString alloc];
             
-            roomID = [self toString:object[@"id"]];
+            roomID = [self stringFrom:object[@"id"]];
             roomToAdd.roomID = roomID;
             
             [roomsToPass addObject:roomToAdd];
@@ -117,7 +117,7 @@
        parameters:roomToSend
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        room.roomID = [self toString:responseObject[@"id"]];
+        room.roomID = [self stringFrom:responseObject[@"id"]];
         [self.rooms addObject:room];
         
         [self.delegate passRooms:self.rooms];
