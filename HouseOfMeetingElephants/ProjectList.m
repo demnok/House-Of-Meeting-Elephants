@@ -10,14 +10,31 @@
 #import "AFNetworking.h"
 
 @implementation ProjectList
+{
+    NSString *_host;
+    NSString *_pathByID;
+    AFHTTPRequestOperationManager *_manager;
+}
 
-#pragma mark - Host setting method
+#pragma mark - Initialisation
 
--(NSString *)host{
-    NSString *host = [[NSString alloc] init];
-    host = @"http://localhost:8001/project/";
+- (instancetype)init {
     
-    return host;
+    if (self = [super init]) {
+        [self setupHost];
+        [self setupManager];
+    }
+    
+    return self;
+}
+
+- (void)setupHost {
+    _host = [[NSString alloc] init];
+    _host = @"http://localhost:8001/project/";
+}
+
+- (void)setupManager {
+    _manager = [AFHTTPRequestOperationManager manager];
 }
 
 #pragma mark - Server communication related methods
@@ -25,30 +42,25 @@
 -(void)fetchProjects {
     
     __block NSMutableArray *projectsToPass = [NSMutableArray array];
-    __block NSString *name;
     __block UIColor *color;
-    __block NSString *projectID;
     
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    
-    [manager GET:[self host] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [_manager GET:_host
+      parameters:nil
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSMutableArray *projects = (NSMutableArray *)responseObject;
         
         [projects enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             
             NSDictionary *object = (NSDictionary *)obj;
-            
-            name = object[@"name"];
-            color = [self transformToColorFromHexString:object[@"color"]];
-            projectID = object[@"id"];
-            
             Project *addedProject = [[Project alloc] init];
             
-            addedProject.name = name;
-            addedProject.color = color;
+            color = [self transformToColorFromHexString:object[@"color"]];
             
-            addedProject.projectID = projectID;
+            addedProject.projectID = [object[@"id"] description];
+            addedProject.name = [object[@"name"] description];
+            
+            addedProject.color = color;
             
             [projectsToPass addObject:addedProject];
         }];
@@ -62,17 +74,17 @@
 
 -(void)addProject:(Project *)project {
     
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    
     NSString *projectColor;
     projectColor = [self transformToStringFromColor:project.color];
     
     NSDictionary *projectToSend = @{@"name": project.name,
                                     @"color": projectColor};
     
-    [manager POST:[self host] parameters:projectToSend success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [_manager POST:_host
+       parameters:projectToSend
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
        
-        project.projectID = responseObject[@"id"];
+        project.projectID = [responseObject[@"id"] description];
         [self.projects addObject:project];
         
         [self.delegate passProjects:self.projects];
@@ -83,10 +95,12 @@
 }
 
 -(void)deleteProject:(Project *)project {
+
+    _pathByID = [_host stringByAppendingString:project.projectID];
     
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    
-    [manager DELETE:[NSString stringWithFormat:@"%@%@", [self host], project.projectID] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [_manager DELETE:_pathByID
+         parameters:nil
+            success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         [self.projects removeObject:project];
         
@@ -98,13 +112,15 @@
 }
 
 -(void)updateProject:(Project *)project {
-    
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    
+
     NSDictionary *projectToSend = @{@"name": project.name,
                                     @"color":[self transformToStringFromColor:project.color]};
 
-    [manager PUT:[NSString stringWithFormat:@"%@%@", [self host], project.projectID] parameters:projectToSend success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    _pathByID = [_host stringByAppendingString:project.projectID];
+    
+    [_manager PUT:_pathByID
+      parameters:projectToSend
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         [self.delegate passProjects:self.projects];
     
@@ -113,7 +129,7 @@
     }];
 }
 
-#pragma mark Color to String and vice versa transformations
+#pragma mark - Color to String and vice versa transformations
 
 -(NSString *)transformToStringFromColor:(UIColor *)color {
     const size_t totalComponents = CGColorGetNumberOfComponents(color.CGColor);
@@ -155,7 +171,8 @@
     
     //Seperate the R,G,B values
     for (NSUInteger i = 0; i < 3; i++) {
-        NSString *component = [hexString substringWithRange:NSMakeRange(componentLength *i, componentLength)];
+        NSRange range = NSMakeRange(componentLength *i, componentLength);
+        NSString *component = [hexString substringWithRange:range];
         if (componentLength == 1) {
             component = [component stringByAppendingString:component];
         }

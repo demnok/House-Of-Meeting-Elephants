@@ -14,6 +14,8 @@
 
 @interface BookingList : NSObject
 
+
+
 @property (nonatomic, strong) NSMutableArray *bookings;
 @property (nonatomic, weak) id<PassBookingsDelegate>delegate;
 

@@ -11,9 +11,10 @@
 
 @implementation RoomList
 {
-    NSString *host;
-    NSString *pathByID;
-    AFHTTPRequestOperationManager *manager;
+    NSString *_host;
+    NSString *_pathByID;
+    AFHTTPRequestOperationManager *_manager;
+    NSDictionary *_roomToSend;
 }
 
 #pragma mark - Initialisation
@@ -21,38 +22,20 @@
 - (instancetype)init {
     
     if (self = [super init]) {
-        [self initHost];
-        [self initManager];
+        [self setupHost];
+        [self setupManager];
     }
     
     return self;
 }
 
-- (void)initHost {
-    host = [[NSString alloc] init];
-    host = @"http://localhost:8001/room/";
+- (void)setupHost {
+    _host = [[NSString alloc] init];
+    _host = @"http://localhost:8001/room/";
 }
 
-- (void)initManager {
-    manager = [AFHTTPRequestOperationManager manager];
-}
-
-#pragma mark - Helper methods
-
-- (NSString *)stringFrom:(id)object {
-    
-    NSDictionary *obj = (NSDictionary *)object;
-    NSString *str = [NSString stringWithFormat:@"%@", obj];
-    
-    return str;
-}
-
-- (NSString *)merge:(NSString *)firstString with:(NSString *)secondString {
-    
-    NSMutableString *result = [firstString mutableCopy];
-    [result appendString:[secondString mutableCopy]];
-    
-    return [result copy];
+- (void)setupManager {
+    _manager = [AFHTTPRequestOperationManager manager];
 }
 
 #pragma mark - Server communication related methods
@@ -61,7 +44,7 @@
     
     __block NSMutableArray *roomsToPass = [NSMutableArray array];
     
-    [manager GET:host
+    [_manager GET:_host
       parameters:nil
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
@@ -73,11 +56,11 @@
             
             Room *roomToAdd = [[Room alloc] init];
             
-            roomToAdd.name = [self stringFrom:object[@"name"]];
+            roomToAdd.name = [object[@"name"] description];
             
             NSString *roomID = [NSString alloc];
             
-            roomID = [self stringFrom:object[@"id"]];
+            roomID = [object[@"id"] description];
             roomToAdd.roomID = roomID;
             
             [roomsToPass addObject:roomToAdd];
@@ -93,9 +76,9 @@
 
 -(void)deleteRoom:(Room *)room {
 
-    pathByID = [self merge:host with:room.roomID];
+    _pathByID = [_host stringByAppendingString:room.roomID];
     
-    [manager DELETE:pathByID
+    [_manager DELETE:_pathByID
          parameters:nil
             success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
@@ -111,13 +94,13 @@
 
 -(void)addRoom:(Room *)room {
 
-    NSDictionary *roomToSend = @{@"name" : room.name};
+    _roomToSend = @{@"name" : room.name};
   
-    [manager POST:host
-       parameters:roomToSend
+    [_manager POST:_host
+       parameters:_roomToSend
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        room.roomID = [self stringFrom:responseObject[@"id"]];
+        room.roomID = [responseObject[@"id"] description];
         [self.rooms addObject:room];
         
         [self.delegate passRooms:self.rooms];
@@ -129,12 +112,12 @@
 
 -(void)updateRoom:(Room *)room {
     
-    pathByID = [self merge:host with:room.roomID];
+    _pathByID = [_host stringByAppendingString:room.roomID];
     
-    NSDictionary *roomToSend = @{@"name" : room.name};
+    _roomToSend = @{@"name" : room.name};
   
-    [manager PUT:pathByID
-      parameters:roomToSend
+    [_manager PUT:_pathByID
+      parameters:_roomToSend
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              
         [self.delegate passRooms:self.rooms];

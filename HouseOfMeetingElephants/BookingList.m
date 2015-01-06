@@ -11,10 +11,11 @@
 
 @implementation BookingList
 {
-    NSString *host;
-    NSString *pathByID;
-    AFHTTPRequestOperationManager *manager;
-    NSDateFormatter *dateFormatter;
+    NSString *_host;
+    NSString *_pathByID;
+    AFHTTPRequestOperationManager *_manager;
+    NSDateFormatter *_dateFormatter;
+    NSDictionary *_bookingToSend;
 }
 
 #pragma mark - Initialisation
@@ -22,26 +23,26 @@
 - (instancetype)init {
     
     if (self = [super init]) {
-        [self initHost];
-        [self initManager];
-        [self initDateFormatter];
+        [self setupHost];
+        [self setupManager];
+        [self setupDateFormatter];
     }
     
     return self;
 }
 
-- (void)initHost {
-    host = [[NSString alloc] init];
-    host = @"http://localhost:8001/reservations/";
+- (void)setupHost {
+    _host = [[NSString alloc] init];
+    _host = @"http://localhost:8001/reservations/";
 }
 
-- (void)initManager {
-    manager = [AFHTTPRequestOperationManager manager];
+- (void)setupManager {
+    _manager = [AFHTTPRequestOperationManager manager];
 }
 
-- (void)initDateFormatter {
-    dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'zzz'Z'";
+- (void)setupDateFormatter {
+    _dateFormatter = [[NSDateFormatter alloc] init];
+    _dateFormatter.dateFormat = @"yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'zzz'Z'";
 }
 
 #pragma mark - Generic helper methods 
@@ -56,22 +57,13 @@
     return [result copy];
 }
 
-- (NSString *)stringFrom:(id)object {
-   
-    NSDictionary *obj = (NSDictionary *)object;
-    NSString *str = [NSString stringWithFormat:@"%@", obj];
-    
-    return str;
-}
-
 #pragma mark - Class helper method
 
-- (NSDate *)dateFrom:(id)object {
+- (NSDate *)dateFrom:(id)object
+{
+    NSString *obj = [NSString stringWithFormat:@"%@", object];
     
-    NSString *obj = [[NSString alloc] init];
-    obj = [NSString stringWithFormat:@"%@", object];
-    
-    return [dateFormatter dateFromString:obj];
+    return [_dateFormatter dateFromString:obj];
 }
 
 #pragma mark - Server communication related methods
@@ -82,28 +74,24 @@
     __block NSMutableArray *bookingsToPass = [NSMutableArray array];
     __block Booking *bk = [[Booking alloc] init];
     
-    [manager GET:host
+    [_manager GET:_host
       parameters:nil
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-    
-        
         
         NSMutableArray *bookings = (NSMutableArray *)responseObject[@"reservations"];
     
-        [bookings enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            
-            NSDictionary *object = (NSDictionary *)obj;
-            
-            NSString *roomID = [NSString alloc];
-            NSString *projectID = [NSString alloc];
-            
-            roomID = [self stringFrom:object[@"meetingRoom"]];
-            projectID = [self stringFrom:object[@"project"]];
+        [bookings enumerateObjectsUsingBlock:^(NSDictionary *bookingDict, NSUInteger idx, BOOL *stop)
+        {
+            NSString *roomID = nil;
+            NSString *projectID = nil;
 
-            bk.name = [self stringFrom:object[@"meetingName"]];
+            roomID = [bookingDict[@"meetingRoom"] description];
+            projectID = [bookingDict[@"project"] description];
 
-            bk.startDate = [self dateFrom:object[@"startDate"]];
-            bk.endDate = [self dateFrom:object[@"endDate"]];
+            bk.name = [bookingDict[@"meetingName"] description];
+
+            bk.startDate = [self dateFrom:bookingDict[@"startDate"]];
+            bk.endDate = [self dateFrom:bookingDict[@"endDate"]];
             
             bk.room = [self searchForRoomWithID:roomID inRoomList:roomList];
             bk.room.roomID = roomID;
@@ -111,9 +99,9 @@
             bk.project = [self searchForProjectWithID:projectID inProjectList:projectList];
             bk.project.projectID = projectID;
             
-            bk.recurrent = [object[@"isRecurrent"] boolValue];
+            bk.recurrent = [bookingDict[@"isRecurrent"] boolValue];
             
-            bk.bookingID = object[@"_id"];
+            bk.bookingID = [bookingDict[@"_id"] description];
             
             [bookingsToPass addObject:bk];
         }];
@@ -129,16 +117,18 @@
 
 -(void)addBooking:(Booking *)booking {
     
-    NSDictionary *bookingToSend = @{@"meetingName": booking.name,
+    _bookingToSend = @{@"meetingName": booking.name,
                                     @"meetingRoom": booking.room.roomID,
                                     @"startDate": booking.startDate,
                                     @"endDate": booking.endDate,
                                     @"project": booking.project.projectID,
                                     @"isRecurrent": [NSString stringWithFormat:@"%@",(booking.isRecurrent ? @"true" : @"false")]};
     
-    [manager POST:host parameters:bookingToSend success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [_manager POST:_host
+       parameters:_bookingToSend
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        booking.bookingID = [self stringFrom:responseObject[@"reservation"][@"_id"]];
+        booking.bookingID = [responseObject[@"reservation"][@"_id"] description];
         
         [self.bookings addObject:booking];
         
@@ -151,17 +141,17 @@
 
 -(void)updateBooking:(Booking *)booking {
 
-    NSDictionary *bookingToSend = @{@"meetingName": booking.name,
-                                   @"meetingRoom": booking.room.roomID,
-                                   @"startDate": booking.startDate,
-                                   @"endDate": booking.endDate,
-                                   @"project": booking.project.projectID,
-                                   @"isRecurrent": [NSString stringWithFormat:@"%@",(booking.isRecurrent ? @"true" : @"false")]};
+    _bookingToSend = @{@"meetingName": booking.name,
+                      @"meetingRoom": booking.room.roomID,
+                      @"startDate": booking.startDate,
+                      @"endDate": booking.endDate,
+                      @"project": booking.project.projectID,
+                      @"isRecurrent": [NSString stringWithFormat:@"%@",(booking.isRecurrent ? @"true" : @"false")]};
     
-    pathByID = [self merge:host with:booking.bookingID];
+    _pathByID = [_host stringByAppendingString:booking.bookingID];
     
-    [manager PUT:pathByID
-      parameters:bookingToSend
+    [_manager PUT:_pathByID
+      parameters:_bookingToSend
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         [self.delegate passData:self.bookings];
@@ -170,11 +160,11 @@
 }
 
 -(void)deleteBooking:(Booking *)booking {
-
-    pathByID = [self merge:host with:booking.bookingID];
     
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    [manager DELETE:pathByID
+    _pathByID = [_host stringByAppendingString:booking.bookingID];
+    
+    _manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [_manager DELETE:_pathByID
          parameters:nil
             success:^(AFHTTPRequestOperation *operation, id responseObject) {
        
@@ -219,7 +209,7 @@
     [projectList.projects enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         Project *project = (Project *)obj;
         
-        NSString *string = [self stringFrom:project.projectID];
+        NSString *string = [project.projectID description];
         
         if([string isEqualToString:projectID]) {
             sentProject = project;

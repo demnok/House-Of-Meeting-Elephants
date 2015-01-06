@@ -45,7 +45,6 @@
 		F83AD0C01A09220900519D0C /* ProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F83AD0BE1A09220900519D0C /* ProjectTableViewCell.xib */; };
 		F87107201A1391A300A10FB8 /* ChooseStartPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F871071F1A1391A300A10FB8 /* ChooseStartPointViewController.m */; };
 		F87107231A1391B300A10FB8 /* ChooseEndPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F87107221A1391B300A10FB8 /* ChooseEndPointViewController.m */; };
-		F883392D1A51FB5B00735604 /* RoomListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F883392C1A51FB5B00735604 /* RoomListTests.m */; };
 		F883392E1A51FB5B00735604 /* RoomListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F883392C1A51FB5B00735604 /* RoomListTests.m */; };
 		F885997E1A1B42740044C38A /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F885996C1A1B42740044C38A /* AFHTTPRequestOperation.m */; };
 		F885997F1A1B42740044C38A /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F885996E1A1B42740044C38A /* AFHTTPRequestOperationManager.m */; };
@@ -59,7 +58,6 @@
 		F88E97821A10D77A00BA93F3 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F88E97701A10D77A00BA93F3 /* .gitignore */; };
 		F88E97831A10D77A00BA93F3 /* FCColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F88E97721A10D77A00BA93F3 /* FCColorPickerViewController.m */; };
 		F88E97841A10D77A00BA93F3 /* FCColorPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F88E97731A10D77A00BA93F3 /* FCColorPickerViewController.xib */; };
-		F88E97851A10D77A00BA93F3 /* iOS-Color-Picker.podspec in Resources */ = {isa = PBXBuildFile; fileRef = F88E97741A10D77A00BA93F3 /* iOS-Color-Picker.podspec */; };
 		F88E97861A10D77A00BA93F3 /* FCBrightDarkGradView.m in Sources */ = {isa = PBXBuildFile; fileRef = F88E97771A10D77A00BA93F3 /* FCBrightDarkGradView.m */; };
 		F88E97871A10D77A00BA93F3 /* FCColorSwatchView.m in Sources */ = {isa = PBXBuildFile; fileRef = F88E97791A10D77A00BA93F3 /* FCColorSwatchView.m */; };
 		F88E97881A10D77A00BA93F3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F88E977A1A10D77A00BA93F3 /* README.md */; };
@@ -167,7 +165,6 @@
 		F88E97711A10D77A00BA93F3 /* FCColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCColorPickerViewController.h; sourceTree = "<group>"; };
 		F88E97721A10D77A00BA93F3 /* FCColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCColorPickerViewController.m; sourceTree = "<group>"; };
 		F88E97731A10D77A00BA93F3 /* FCColorPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FCColorPickerViewController.xib; sourceTree = "<group>"; };
-		F88E97741A10D77A00BA93F3 /* iOS-Color-Picker.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "iOS-Color-Picker.podspec"; sourceTree = "<group>"; };
 		F88E97761A10D77A00BA93F3 /* FCBrightDarkGradView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCBrightDarkGradView.h; sourceTree = "<group>"; };
 		F88E97771A10D77A00BA93F3 /* FCBrightDarkGradView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCBrightDarkGradView.m; sourceTree = "<group>"; };
 		F88E97781A10D77A00BA93F3 /* FCColorSwatchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCColorSwatchView.h; sourceTree = "<group>"; };
@@ -411,7 +408,6 @@
 				F88E97711A10D77A00BA93F3 /* FCColorPickerViewController.h */,
 				F88E97721A10D77A00BA93F3 /* FCColorPickerViewController.m */,
 				F88E97731A10D77A00BA93F3 /* FCColorPickerViewController.xib */,
-				F88E97741A10D77A00BA93F3 /* iOS-Color-Picker.podspec */,
 				F88E97751A10D77A00BA93F3 /* Private */,
 				F88E977A1A10D77A00BA93F3 /* README.md */,
 				F88E977B1A10D77A00BA93F3 /* Resources */,
@@ -626,7 +622,6 @@
 			files = (
 				F88E97881A10D77A00BA93F3 /* README.md in Resources */,
 				F88E97891A10D77A00BA93F3 /* colormap.png in Resources */,
-				F88E97851A10D77A00BA93F3 /* iOS-Color-Picker.podspec in Resources */,
 				F83AD0B81A0921DD00519D0C /* RoomTableViewCell.xib in Resources */,
 				F88E97821A10D77A00BA93F3 /* .gitignore in Resources */,
 				F88E978D1A10D77A00BA93F3 /* color-picker-iphone-5.png in Resources */,
@@ -709,7 +704,6 @@
 				F88E97831A10D77A00BA93F3 /* FCColorPickerViewController.m in Sources */,
 				F83AD03F1A08FD9000519D0C /* main.m in Sources */,
 				F88599821A1B42740044C38A /* AFSecurityPolicy.m in Sources */,
-				F883392D1A51FB5B00735604 /* RoomListTests.m in Sources */,
 				F8BC52DB1A13810D00E98E8C /* ChooseProjectViewController.m in Sources */,
 				F8C13D621A35C89800F3BC0B /* RoomDetailTableViewController.m in Sources */,
 			);
@@ -788,7 +782,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/HouseOfMeetingElephants/**";
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -831,7 +825,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/HouseOfMeetingElephants/**";
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -852,9 +846,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"/Applications/XCode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks\n/Applications/Xcode.app/Contents/OtherFrameworks",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = HouseOfMeetingElephants/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -871,9 +863,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"/Applications/XCode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks\n/Applications/Xcode.app/Contents/OtherFrameworks",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = HouseOfMeetingElephants/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -888,7 +878,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Library/Frameworks;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -908,7 +898,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = /Applications/Xcode.app/Contents/Developer/Library/Frameworks;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
 				HEADER_SEARCH_PATHS = (
 					"\"$(OBJROOT)/UninstallerProducts/include\"",
 					"\"$(TARGET_BUILD_DIR)/usr/local/lib/include\"",
