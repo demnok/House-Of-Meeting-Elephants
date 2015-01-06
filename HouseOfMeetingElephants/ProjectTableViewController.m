@@ -10,7 +10,7 @@
 #import "Project.h"
 
 @interface ProjectTableViewController () {
-    NSString *cellID;
+    NSString *_cellID;
 }
 
 @property (nonatomic, strong) Project *project;
@@ -34,11 +34,11 @@
     
     self.project = [[Project alloc] init];
     
-    cellID = @"ProjectTableViewCell";
+    _cellID = @"ProjectTableViewCell";
     
-    UINib *nib = [UINib nibWithNibName:cellID bundle:nil];
+    UINib *nib = [UINib nibWithNibName:_cellID bundle:nil];
     
-    [self.tableView registerNib:nib forCellReuseIdentifier:cellID];
+    [self.tableView registerNib:nib forCellReuseIdentifier:_cellID];
 }
 
 #pragma mark - Reloading data methods
@@ -113,7 +113,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    ProjectTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    ProjectTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:_cellID];
    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     

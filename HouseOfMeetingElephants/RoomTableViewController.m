@@ -9,7 +9,7 @@
 #import "RoomTableViewController.h"
 
 @interface RoomTableViewController () {
-    NSString *cellID;
+    NSString *_cellID;
 }
 
 @property (nonatomic, strong) Room *sentRoom;
@@ -30,11 +30,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    
-    cellID = @"RoomTableViewCell";
+    _cellID = @"RoomTableViewCell";
     
-    UINib *nib = [UINib nibWithNibName:cellID bundle:nil];
+    UINib *nib = [UINib nibWithNibName:_cellID bundle:nil];
     
-    [self.tableView registerNib:nib forCellReuseIdentifier:cellID];
+    [self.tableView registerNib:nib forCellReuseIdentifier:_cellID];
 }
 
 #pragma mark - Reloading data methods
@@ -59,7 +59,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    RoomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    RoomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:_cellID];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.currentRoom = self.roomList.rooms[indexPath.row];

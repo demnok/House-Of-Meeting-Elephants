@@ -8,8 +8,9 @@
 
 #import "BookingTableViewController.h"
 
-@interface BookingTableViewController () {
-    NSString *cellID;
+@interface BookingTableViewController ()
+{
+    NSString *_cellID;
 }
 
 @property (nonatomic, strong) BookingList *bookingList;
@@ -35,14 +36,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    cellID = @"BookingTableViewCell";
+    _cellID = @"BookingTableViewCell";
     
     self.bookingList = [[BookingList alloc] init];
     self.projectList = [[ProjectList alloc] init];
     
-    UINib *nib = [UINib nibWithNibName:cellID bundle:nil];
+    UINib *nib = [UINib nibWithNibName:_cellID bundle:nil];
     
-    [self.tableView registerNib:nib forCellReuseIdentifier:cellID];
+    [self.tableView registerNib:nib forCellReuseIdentifier:_cellID];
 }
 
 #pragma mark - Reloading data methods
@@ -133,7 +134,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    BookingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    BookingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:_cellID];
     
     cell.currentBooking = self.bookingList.bookings[indexPath.row];
     
