@@ -458,8 +458,8 @@
 		F88E97DA1A10F1BD00BA93F3 /* Create Project Table View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				F82649F51A0A209300D0A0EA /* CreateProjectTableViewController.h */,
 				F82649F61A0A209300D0A0EA /* CreateProjectTableViewController.m */,
+				F82649F51A0A209300D0A0EA /* CreateProjectTableViewController.h */,
 				F8DD58911A16233D00D00B2B /* CreateProjectViewControllerDelegate.h */,
 				F88E97D91A10F19600BA93F3 /* Color Picker */,
 			);
